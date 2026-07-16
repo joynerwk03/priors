@@ -87,6 +87,25 @@ export default function Quiz({ round, onDone }: Props) {
           </p>
           {q.source.funding && <p className="funding">Funding note: {q.source.funding}</p>}
 
+          {q.why && (
+            <details className="why">
+              <summary>
+                Why might this be? <span className="why-hint">a proposed explanation ↓</span>
+              </summary>
+              <div className="why-body">
+                <p>{q.why.body}</p>
+                {q.why.sources?.map((s, i) => (
+                  <p className="source" key={i}>
+                    {s.name} — {s.detail}{' '}
+                    <a href={s.url} target="_blank" rel="noreferrer">
+                      view ↗
+                    </a>
+                  </p>
+                ))}
+              </div>
+            </details>
+          )}
+
           <div className="reveal-foot">
             <span className="thumbs">
               Fair question?

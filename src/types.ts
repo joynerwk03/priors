@@ -18,6 +18,17 @@ export interface Source {
   funding?: string;
 }
 
+export interface WhyExplanation {
+  /**
+   * Proposed mechanism(s) behind the statistic — framed as hypotheses, not
+   * settled fact. Where the cause is genuinely contested, name the competing
+   * explanations rather than pick one. Hidden behind a dropdown so it never
+   * contaminates the player's raw prediction.
+   */
+  body: string;
+  sources?: Source[];
+}
+
 export interface Question {
   id: string;
   category: Category;
@@ -31,5 +42,7 @@ export interface Question {
   explanation: string;
   /** Honest limitation of the finding. Stating it is a feature. */
   caveat?: string;
+  /** Optional, opt-in deeper dive into WHY the trend exists. */
+  why?: WhyExplanation;
   source: Source;
 }

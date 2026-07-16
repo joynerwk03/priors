@@ -3,72 +3,121 @@
 **Status: AWAITING WILLIAM'S REVIEW.** Nothing launches until every row is
 approved. This mirrors `src/data/questions.ts` — keep the two in sync.
 
-"Verified" = the specific number was checked against the listed source on
-2026-07-16 via web search. "Knowledge-HC" = high-confidence well-known finding
-cited from model knowledge with a real source link — **double-check these
-before launch.**
+**47 questions** across 8 categories. Every question now also has a `why` — a
+proposed *mechanism* for the trend, framed as a hypothesis (not settled fact),
+shown behind a "Why might this be?" dropdown after the player answers. Where a
+cause is genuinely contested, the `why` names the competing explanations
+instead of picking one. 24 of the `why` blocks cite an extra source.
 
-## Balance audit
+"Verified ✅" = the specific number was checked against the listed source via
+web search (all on 2026-07-16). "Knowledge-HC" = well-known finding cited from
+model knowledge with a real source link — **double-check these before launch.**
 
-Whose priors each question fights (rough): **L** = left/progressive,
-**R** = right/conservative, **Rel** = religious, **Sec** = secular,
-**Both** = everyone's vibes.
+## ⚠️ Balance audit — READ THIS
 
-Count: fights-L ≈ 11, fights-R ≈ 11, fights-Sec ≈ 3, fights-Rel ≈ 1 (scientists-god
-cuts both ways), Both ≈ 4. Reasonably balanced; add a Rel-fighting question or
-two over time (e.g. evangelical divorce rates — sourcing was too messy for v1).
+The idea only works if it gores every worldview roughly equally. Current tally
+of *whose intuition each question punctures* (rough, debatable labels):
+
+- **Punctures a right-coded intuition: ~21** (immigration/crime, guns, welfare
+  fraud, Muslim share, LGBT share, "best healthcare," death-penalty deterrence,
+  CEO pay, wealth concentration, min-wage, abstinence-ed, teen-births, crime
+  trend, marijuana, solar cost…)
+- **Punctures a left-coded intuition: ~14** (nuclear safety, GMOs, organic,
+  disaster deaths, air quality, extreme poverty, rifles/"assault weapons,"
+  vaping, US emissions falling, rent control, plastic recycling, police-shooting
+  counts, single-parent poverty, controlled pay gap)
+- **Punctures a secular intuition: ~6** (religious happiness, church-mortality,
+  religious giving, religious fertility, historical Jesus, scientists' belief)
+- **Punctures a religious intuition: ~2** (intercessory-prayer trial,
+  scientists' belief)
+- **Cross-cutting / fights everyone: ~5** (gun suicides, recidivism, warming
+  amount, depression prevalence, vaccine-autism)
+
+**My read: the bank currently tilts toward puncturing conservative-coded
+intuitions** (the new batch leaned that way — lots of "the fearful right-coded
+guess is wrong" items). It's not egregious, but to hit the "gores everyone
+equally" bar I'd add ~5–7 more left-puncturing questions next round.
+**Religion is also thin (only 2 puncture religious priors)** — worth adding,
+e.g., young-earth vs geological age, or global secularization trends. Tell me
+which direction to push, and veto anything that reads as slanted.
 
 ## The bank
 
-| id | Claim (answer) | Source | Verified | Fights |
+### Existing 27 (now with `why` added)
+
+| id | Claim (answer) | Source | Verified | Punctures |
 |---|---|---|---|---|
-| weed-iq-twins | Teen cannabis use ≠ IQ decline vs co-twin; no dose-response | Jackson et al., PNAS 2016 | ✅ 2026-07-16 | R |
-| cannabis-dependence | 8.9% of cannabis users ever dependent (alcohol 22.7%, nicotine 67.5%) | Lopez-Quintero 2011, NESARC | ✅ 2026-07-16 | R |
-| gun-suicides | 62% of 2024 US gun deaths were suicides; majority every year since 1995 | CDC via JHU (funding noted) | ✅ 2026-07-16 | Both |
-| immigrant-crime | US-born 2×+ violent-crime arrest rate vs undocumented (TX 2012–18) | Light et al., PNAS 2020 | ✅ 2026-07-16 | R |
-| police-unarmed | 14 unarmed Black people fatally shot by police in 2019 (~20-25/yr avg); 2× population-adjusted rate vs white also true | WaPo Fatal Force | ✅ 2026-07-16 | L |
-| scientists-god | 51% of AAAS scientists believe in God/higher power (33% God) | Pew 2009 | ✅ 2026-07-16 | Sec+Rel |
-| religion-happiness | Actively religious 36% "very happy" vs 25% others; no health link | Pew 2019, 26 countries | ✅ 2026-07-16 | Sec |
-| church-mortality | >1×/week attendance → 33% lower all-cause mortality (HR 0.67), n=74,534, 16 yrs | Li/VanderWeele, JAMA IM 2016 | ✅ 2026-07-16 (fetched abstract) | Sec |
-| single-parent-poverty | Child poverty: 31.3% single-mother vs 5.5% married (2024) | Census CPS / StL Fed | ✅ 2026-07-16 | L |
-| pay-gap-controlled | Controlled gap 99¢ vs uncontrolled 82¢; mothers 74¢ | Payscale 2026 (funding noted) | ✅ 2026-07-16 | L |
-| trans-regret | 1% pooled surgical regret (27 studies, n=7,928); follow-up caveat stated | Bustos 2021, PRS-GO | ✅ 2026-07-16 | R |
-| foreign-aid | ~1% of federal budget; avg American guesses 26% | KFF 2025 | ✅ 2026-07-16 | R |
-| recidivism | 82% rearrested within 10 years (66% in 3) | BJS 2021 | ✅ 2026-07-16 | Both |
-| crime-trend | Violent crime −53% since 1991; ≥60% say it's rising in 23/27 Gallup polls | FBI via Pew | ✅ 2026-07-16 | R |
-| disaster-deaths | Disaster death rate down >90% since 1920s | OWID/EM-DAT | ✅ 2026-07-16 | L |
-| nuclear-safety | Coal ~25 deaths/TWh vs nuclear ~0.03 (~800×) | OWID | ✅ 2026-07-16 | L |
-| warming-amount | ~1.3°C above 1850–1900 (2024 ~1.5°C) | NASA/WMO | Knowledge-HC | Both |
-| gmo-safety | NASEM 2016: no substantiated evidence of GMO health risk | NASEM | Knowledge-HC | L |
-| organic-nutrition | Stanford 2012: no nutrient advantage; −30% pesticide-residue risk | Smith-Spangler, Annals IM | Knowledge-HC | L |
-| abstinence-ed | Abstinence emphasis ↔ HIGHER teen pregnancy after controls | Stanger-Hall & Hall, PLoS ONE 2011 | ✅ 2026-07-16 | R |
-| min-wage | 138 min-wage hikes: low-wage job count essentially unchanged | Cengiz et al., QJE 2019 | ✅ 2026-07-16 | R |
-| mobility | 7.5% chance bottom-quintile child reaches top quintile | Chetty et al., QJE 2014 | Knowledge-HC | Both/R |
-| extreme-poverty | Extreme poverty ~38% (1990) → ~9% today | World Bank/OWID | Knowledge-HC | L (pessimism) |
-| depression-prevalence | 8.3% of US adults had past-year major depressive episode (2021) | NSDUH/NIMH | ✅ 2026-07-16 | Both |
-| abortion-timing | 1.1% of US abortions at ≥21 weeks; 92.8% ≤13 weeks | CDC Surveillance 2022 | ✅ 2026-07-16 | R |
-| teen-births | Teen birth rate −79% since 1991 (61.8 → 13.1 per 1,000) | CDC/NCHS | ✅ 2026-07-16 | R ("kids these days") |
-| air-quality | Six criteria pollutants −78% since 1970, GDP ~4× | EPA | Knowledge-HC | L |
+| weed-iq-twins | Teen cannabis ≠ IQ decline vs co-twin | Jackson, PNAS 2016 | ✅ | Right |
+| cannabis-dependence | 8.9% of users ever dependent | Lopez-Quintero 2011 | ✅ | Right |
+| gun-suicides | 62% of gun deaths are suicides | CDC via JHU | ✅ | Both |
+| immigrant-crime | US-born 2×+ violent-arrest rate | Light, PNAS 2020 | ✅ | Right |
+| police-unarmed | 14 unarmed Black fatally shot, 2019 | WaPo Fatal Force | ✅ | Left |
+| scientists-god | 51% of scientists believe | Pew 2009 | ✅ | Sec+Rel |
+| religion-happiness | Actively religious happier | Pew 2019 | ✅ | Secular |
+| church-mortality | 33% lower mortality (HR 0.67) | JAMA IM 2016 | ✅ | Secular |
+| single-parent-poverty | 31% vs 5.5% child poverty | Census 2024 | ✅ | Left |
+| pay-gap-controlled | Controlled gap ~99¢ | Payscale 2026 | ✅ | Left |
+| trans-regret | 1% surgical regret | Bustos 2021 | ✅ | Right |
+| foreign-aid | ~1% of federal budget | KFF 2025 | ✅ | Right |
+| recidivism | 82% rearrested in 10 yrs | BJS 2021 | ✅ | Both |
+| crime-trend | Violent crime −53% since 1991 | FBI via Pew | ✅ | Right |
+| disaster-deaths | Death rate down >90% | OWID/EM-DAT | ✅ | Left |
+| nuclear-safety | Coal ~800× deadlier than nuclear | OWID | ✅ | Left |
+| warming-amount | ~1.3°C since 1850–1900 | NASA/WMO | Knowledge-HC | Both |
+| gmo-safety | NASEM: no substantiated risk | NASEM 2016 | Knowledge-HC | Left |
+| organic-nutrition | No nutrient advantage | Annals IM 2012 | Knowledge-HC | Left |
+| abstinence-ed | Abstinence emphasis ↔ more pregnancy | Stanger-Hall 2011 | ✅ | Right |
+| min-wage | 138 hikes: low-wage jobs flat | Cengiz, QJE 2019 | ✅ | Right |
+| mobility | 7.5% bottom→top quintile | Chetty, QJE 2014 | Knowledge-HC | Both/R |
+| extreme-poverty | ~38% (1990) → ~9% today | World Bank/OWID | Knowledge-HC | Left |
+| depression-prevalence | 8.3% past-year MDE | NSDUH/NIMH | ✅ | Both |
+| abortion-timing | 1.1% at ≥21 weeks | CDC 2022 | ✅ | Right |
+| teen-births | −79% since 1991 | CDC/NCHS | ✅ | Right |
+| air-quality | Six pollutants −78% since 1970 | EPA | Knowledge-HC | Left |
 
-## Framing rules used (from the original idea + CLAUDE.md invariants)
+### New 20 (added 2026-07-16)
 
-- Rates, not totals; anchors provided in `context` where a lay reader lacks a
-  reference point.
-- Explanations written to be **non-dismissible for the gored side**: several
-  explicitly state the "other half" of the truth (e.g. police-unarmed also
-  states the 2× population-adjusted disparity; pay-gap states the structural
-  gap is real).
-- Caveats stated plainly (correlation, contested classifications, follow-up
-  loss). Funding notes on JHU gun center and Payscale.
+| id | Claim (answer) | Source | Verified | Punctures |
+|---|---|---|---|---|
+| rifles-share | Rifles ~3% of gun murders (< knives) | FBI UCR 2019 | ✅ | Left |
+| lgbt-share | ~9% LGBT (public guesses 23%) | Gallup 2025 | ✅ | Right |
+| life-expectancy | US several yrs below peers, 2× spend | Peterson-KFF/OECD | ✅ | Right |
+| vaping-harm | ~95% less harmful than smoking | PHE 2015 (funding noted) | ✅ | Left |
+| ceo-pay | 21:1 (1965) → 344:1 (2022) | EPI 2022 (funding noted) | ✅ | Right |
+| prayer-step | Intercessory prayer: no effect | Benson, Am Heart J 2006 | ✅ | Religious |
+| religious-giving | Religious give/volunteer more | Brooks 2006 (funding noted) | ✅ | Secular |
+| death-penalty | NAS: can't establish deterrence | NRC 2012 | ✅ | Right |
+| us-emissions | US CO₂ −18% since 2007 peak | EIA/C2ES | ✅ | Left |
+| clearance-rate | ~12% property crimes cleared | FBI 2022 | ✅ | Right |
+| religious-fertility | Weekly attenders ~2.1 vs ~1.4 TFR | IFS/Pew 2025 | ✅ | Secular |
+| muslim-share | ~1% Muslim (public guesses 17%) | Ipsos/Pew | ✅ | Right |
+| vaccine-autism | No link (657k Danish kids) | Hviid, Annals IM 2019 | ✅ | Cross (antivax) |
+| wealth-top1 | Top 1% own ~31% of wealth | Federal Reserve DFA 2024 | ✅ | Right |
+| snap-fraud | ~1.5% trafficking (not 10.6%) | USDA/GAO | ✅ | Right |
+| rent-control | SF: supply −15%, rents +5% | Diamond, AER 2019 | ✅ | Left |
+| mj-teen-use | Legalization: no teen-use rise | JAMA Pediatrics | ✅ | Right |
+| plastic-recycling | Only ~9% of plastic recycled | OECD 2022 | ✅ | Left |
+| solar-cost | Solar/wind cheapest new power | Lazard 2024/25 | ✅ | Right |
+| historical-jesus | Near-universal: Jesus existed | Ehrman 2012 | Knowledge-HC | Secular |
 
-## Cut candidates considered and why they were cut
+## Framing rules (unchanged from v1)
 
-- Right-to-carry laws vs crime — literature genuinely contested (Lott vs
-  Donohue); no non-dismissible answer exists.
-- Defensive gun uses per year — estimates span 60k–2.5M; same problem.
-- Evangelical vs secular divorce rates — data quality poor (Barna
-  self-report vs attendance effects).
-- Prohibition & alcohol consumption — real decline initially but rebound
-  disputes make the "gotcha" dismissible.
-- US per-pupil spending vs OECD — ranges 28–49% depending on method; too
-  slippery for a clean multiple choice.
+- Rates not totals; anchors in `context` where a lay reader lacks a reference.
+- Explanations written to be **non-dismissible for the punctured side** —
+  several state the "other half" of the truth (police-unarmed states the 2×
+  disparity; pay-gap affirms the structural gap; life-expectancy notes US
+  health prices; wealth-top1 notes debt/young-household nuance).
+- Caveats stated plainly. Funding notes on JHU gun center, Payscale, EPI
+  (labor-aligned), PHE (95% is an expert estimate), Brooks (conservative).
+- `why` blocks are hypotheses, labeled "a proposed explanation," and name
+  competing mechanisms where the cause is contested (single-parent poverty,
+  police disparity, abstinence-ed, depression trend).
+
+## Cut candidates (considered, not included)
+
+Right-to-carry vs crime (literature genuinely contested); defensive gun uses
+(estimates span 60k–2.5M); evangelical vs secular divorce rates (poor data);
+per-pupil spending vs OECD (28–49% depending on method). All were too
+dismissible to meet the non-dismissibility bar. On deck for a left-puncturing
+rebalance round: homelessness-vs-housing-cost, free-trade/tariff price effects,
+nuclear-waste deaths (~0), ocean plastic concentrated in a few rivers.

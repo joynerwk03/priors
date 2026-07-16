@@ -500,3 +500,109 @@ a:focus-visible {
 .about .cta {
   margin-top: 2rem;
 }
+
+/* ---------- home: category picker ---------- */
+.big-cta {
+  display: block;
+  width: 100%;
+  text-align: center;
+  margin: 0.5rem 0 2rem;
+}
+
+.pick-label {
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin: 0 0 1rem;
+}
+
+.cat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 0.7rem;
+  margin-bottom: 1.5rem;
+}
+
+.cat-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.2rem;
+  background: var(--card);
+  border: 1.5px solid var(--border);
+  border-radius: 12px;
+  padding: 0.9rem 1rem;
+  text-align: left;
+  transition: border-color 0.12s ease, transform 0.08s ease;
+}
+
+.cat-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+
+.cat-icon {
+  font-size: 1.4rem;
+  line-height: 1;
+}
+
+.cat-title {
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.cat-count {
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+/* ---------- reveal: "why" dropdown ---------- */
+.why {
+  margin: 1rem 0 0;
+  border-top: 1px solid var(--border);
+  padding-top: 0.9rem;
+}
+
+.why > summary {
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.95rem;
+  list-style: none;
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+
+.why > summary::-webkit-details-marker {
+  display: none;
+}
+
+.why > summary::before {
+  content: '▸';
+  color: var(--accent);
+  transition: transform 0.15s ease;
+  display: inline-block;
+}
+
+.why[open] > summary::before {
+  transform: rotate(90deg);
+}
+
+.why-hint {
+  font-weight: 400;
+  font-size: 0.8rem;
+  color: var(--muted);
+  font-style: italic;
+}
+
+.why-body {
+  margin-top: 0.7rem;
+  padding-left: 1.1rem;
+  border-left: 2px solid var(--border);
+  animation: rise 0.2s ease;
+}
+
+.why-body > p {
+  margin: 0 0 0.5rem;
+  font-size: 0.95rem;
+}

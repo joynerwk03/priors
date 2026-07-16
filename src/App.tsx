@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react';
 import { QUESTIONS } from './data/questions';
-import type { Question } from './types';
+import type { Category, Question } from './types';
 import { buildRound } from './lib/round';
 import { lifetimeStats } from './lib/storage';
 import Home from './screens/Home';
@@ -12,8 +12,8 @@ import About from './screens/About';
 type Screen =
   | { name: 'home' }
   | { name: 'about' }
-  | { name: 'quiz'; round: Question[] }
-  | { name: 'results'; results: RoundResult[] };
+  | { name: 'quiz'; round: Question[]; category?: Category }
+  | { name: 'results'; results: RoundResult[]; category?: Category };
 
 export const FEEDBACK_MAILTO =
   'mailto:joynerwk03@gmail.com?subject=' + encodeURIComponent('Priors feedback');
@@ -36,9 +36,10 @@ export default function App() {
     return (id: string) => m.get(id);
   }, []);
 
-  const startRound = () => {
+  const startRound = (category?: Category) => {
     const { seenIds } = lifetimeStats(categoryOf);
-    setScreen({ name: 'quiz', round: buildRound(QUESTIONS, seenIds) });
+    const pool = category ? QUESTIONS.filter((q) => q.category === category) : QUESTIONS;
+    setScreen({ name: 'quiz', round: buildRound(pool, seenIds), category });
   };
 
   const goHome = () => setScreen({ name: 'home' });
@@ -58,10 +59,21 @@ export default function App() {
         {screen.name === 'home' && <Home onStart={startRound} categoryOf={categoryOf} />}
         {screen.name === 'about' && <About onBack={goHome} />}
         {screen.name === 'quiz' && (
-          <Quiz round={screen.round} onDone={(results) => setScreen({ name: 'results', results })} />
+          <Quiz
+            round={screen.round}
+            onDone={(results) =>
+              setScreen({ name: 'results', results, category: screen.category })
+            }
+          />
         )}
         {screen.name === 'results' && (
-          <Results results={screen.results} onAgain={startRound} categoryOf={categoryOf} />
+          <Results
+            results={screen.results}
+            category={screen.category}
+            onAgain={() => startRound(screen.category)}
+            onPickCategory={goHome}
+            categoryOf={categoryOf}
+          />
         )}
       </main>
 

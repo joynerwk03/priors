@@ -10,7 +10,9 @@ export interface RoundResult {
 
 interface Props {
   results: RoundResult[];
+  category?: Category;
   onAgain: () => void;
+  onPickCategory: () => void;
   categoryOf: (id: string) => Category | undefined;
 }
 
@@ -21,7 +23,13 @@ function verdictFor(pct: number): string {
   return 'Your worldview just got peer-reviewed.';
 }
 
-export default function Results({ results, onAgain, categoryOf }: Props) {
+export default function Results({
+  results,
+  category,
+  onAgain,
+  onPickCategory,
+  categoryOf,
+}: Props) {
   const [copied, setCopied] = useState(false);
   const score = results.filter((r) => r.correct).length;
   const total = results.length;
@@ -39,7 +47,8 @@ export default function Results({ results, onAgain, categoryOf }: Props) {
 
   const share = async () => {
     const marks = results.map((r) => (r.correct ? '✅' : '❌')).join('');
-    const text = `Priors — my worldview vs. reality: ${score}/${total}\n${marks}\nCan your worldview predict the data?`;
+    const label = category ?? 'Mixed';
+    const text = `Priors (${label}) — my worldview vs. reality: ${score}/${total}\n${marks}\nCan your worldview predict the data?`;
     try {
       await navigator.clipboard.writeText(text);
       setCopied(true);
@@ -51,7 +60,7 @@ export default function Results({ results, onAgain, categoryOf }: Props) {
 
   return (
     <div className="results">
-      <p className="kicker">Round complete</p>
+      <p className="kicker">{category ? `${category} round` : 'Mixed round'} complete</p>
       <h1 className="big-score">
         {score}
         <span className="of">/{total}</span>
@@ -59,16 +68,18 @@ export default function Results({ results, onAgain, categoryOf }: Props) {
       <p className="verdict-line">{verdictFor(pct)}</p>
       <p className="marks">{results.map((r) => (r.correct ? '✅' : '❌')).join(' ')}</p>
 
-      <div className="cat-breakdown">
-        {[...byCat.entries()].map(([cat, c]) => (
-          <div className="cat-row" key={cat}>
-            <span className="cat-name">{cat}</span>
-            <span className="cat-score">
-              {c.correct}/{c.total}
-            </span>
-          </div>
-        ))}
-      </div>
+      {byCat.size > 1 && (
+        <div className="cat-breakdown">
+          {[...byCat.entries()].map(([cat, c]) => (
+            <div className="cat-row" key={cat}>
+              <span className="cat-name">{cat}</span>
+              <span className="cat-score">
+                {c.correct}/{c.total}
+              </span>
+            </div>
+          ))}
+        </div>
+      )}
 
       {life.answered > 0 && (
         <p className="fineprint">
@@ -80,10 +91,13 @@ export default function Results({ results, onAgain, categoryOf }: Props) {
 
       <div className="results-actions">
         <button className="cta" onClick={onAgain}>
-          Play another round
+          {category ? `Another ${category} round` : 'Play another round'}
+        </button>
+        <button className="cta ghost" onClick={onPickCategory}>
+          Pick a category
         </button>
         <button className="cta ghost" onClick={share}>
-          {copied ? 'Copied!' : 'Copy result to share'}
+          {copied ? 'Copied!' : 'Copy result'}
         </button>
       </div>
 

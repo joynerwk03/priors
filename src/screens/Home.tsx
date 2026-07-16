@@ -3,12 +3,25 @@ import type { Category } from '../types';
 import { lifetimeStats } from '../lib/storage';
 
 interface Props {
-  onStart: () => void;
+  onStart: (category?: Category) => void;
   categoryOf: (id: string) => Category | undefined;
 }
 
+const ICONS: Record<Category, string> = {
+  Politics: '🏛️',
+  Religion: '⛪',
+  Science: '🔬',
+  'Drugs & Health': '💊',
+  'Justice & Crime': '⚖️',
+  Economics: '📈',
+  Society: '👥',
+  Environment: '🌍',
+};
+
 export default function Home({ onStart, categoryOf }: Props) {
-  const categories = [...new Set(QUESTIONS.map((q) => q.category))];
+  const counts = new Map<Category, number>();
+  for (const q of QUESTIONS) counts.set(q.category, (counts.get(q.category) ?? 0) + 1);
+  const categories = [...counts.keys()].sort((a, b) => a.localeCompare(b));
   const life = lifetimeStats(categoryOf);
 
   return (
@@ -21,41 +34,31 @@ export default function Home({ onStart, categoryOf }: Props) {
       </h1>
       <p className="lede">
         A scientific theory earns trust by predicting experiments. A worldview should earn trust
-        the same way: by predicting the world. Each question below asks you to predict a real
-        statistic that people with different worldviews expect wildly different answers to. Reason
-        it out, commit to a guess, then see what the data says — with the source.
+        the same way: by predicting the world. Each question asks you to predict a real statistic
+        that people with different worldviews expect wildly different answers to. Reason it out,
+        commit to a guess, then see what the data says — with the source.
       </p>
 
-      <ol className="how">
-        <li>
-          <strong>Read the question.</strong> Rates, not raw counts — and we give you anchor facts,
-          so no specialist knowledge is needed.
-        </li>
-        <li>
-          <strong>Reason from your model of the world.</strong> Every question is guessable. None
-          are trivia.
-        </li>
-        <li>
-          <strong>Face the data.</strong> Primary source, funding disclosure, and the honest
-          caveats — dismissing it is meant to be hard.
-        </li>
-      </ol>
-
-      <button className="cta" onClick={onStart}>
-        Test your priors — 10 questions
+      <button className="cta big-cta" onClick={() => onStart()}>
+        Mixed round — {Math.min(10, QUESTIONS.length)} questions across every topic
       </button>
 
-      <div className="chips">
+      <p className="pick-label">…or pick a category</p>
+      <div className="cat-grid">
         {categories.map((c) => (
-          <span className="chip" key={c}>
-            {c}
-          </span>
+          <button className="cat-card" key={c} onClick={() => onStart(c)}>
+            <span className="cat-icon" aria-hidden="true">
+              {ICONS[c]}
+            </span>
+            <span className="cat-title">{c}</span>
+            <span className="cat-count">{counts.get(c)} questions</span>
+          </button>
         ))}
       </div>
 
       <p className="fineprint">
-        {QUESTIONS.length} questions at launch · sources cited on every answer · your results never
-        leave your browser
+        {QUESTIONS.length} questions · sources cited on every answer · your results never leave
+        your browser
         {life.rounds > 0 && life.answered > 0 && (
           <>
             {' '}
