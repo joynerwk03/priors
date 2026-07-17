@@ -3,7 +3,40 @@
 **Status: AWAITING WILLIAM'S REVIEW.** Nothing launches until every row is
 approved. This mirrors `src/data/questions.ts` — keep the two in sync.
 
-**47 questions** across 8 categories. Every question now also has a `why` — a
+> **2026-07-17 update — 67 questions.** Three design fixes from William's
+> playtest are done; +16 new questions added (all web-verified that day).
+>
+> **Fixes applied:**
+> 1. **No more deducible answers.** Every option in a question now shares one
+>    form and granularity — the "Risen / Flat / Fallen 18%" tell (where the
+>    lone specific option is obviously the answer) is gone everywhere. A
+>    validator in the build check now *fails* any question where exactly one
+>    option carries a number and the rest don't. Several answers were also
+>    moved OFF the extreme by adding a plausible option past the true value
+>    (church-mortality, us-emissions, rent-control, wealth-top1, lgbt-share),
+>    so "always pick the most shocking option" no longer works.
+> 2. **Crime decline now explains itself.** `crime-trend`'s `why` leads with
+>    why crime actually fell — Levitt's four factors (police, prison, crack
+>    ebbing, abortion) vs the Brennan Center's rebuttal (~5% from
+>    incarceration), plus lead and security tech — and states plainly that no
+>    explanation commands consensus. The perception gap is now a secondary
+>    note, not the whole answer.
+> 3. **Recidivism range starts lower**, 4 options: 20/40/60/80 (answer 80%).
+>
+> **Category counts (target ≥10 for launch):** Environment 10 ✅ · Politics 9 ·
+> Justice & Crime 9 · Religion 9 · Drugs & Health 8 · Society 8 · Economics 8 ·
+> **Science 6** ← thinnest. **+13 more needed to hit ≥10 everywhere.**
+>
+> **Balance is much better.** The new batch was deliberately weighted toward
+> left- and secular-puncturing to correct the tilt flagged last round: drug
+> offenders are only ~13% of state prisoners, private prisons ~8%, top 1% pay
+> ~38% of income taxes, the middle class mostly moved UP, homelessness tracks
+> housing not addiction, ocean plastic is 80%+ Asian rivers, prison population
+> down 22%, Earth greened 10%, IQ ~70–80% heritable in adulthood; plus 37% of
+> Americans are young-earth creationists and the global unaffiliated share is
+> projected to *shrink* by 2050.
+
+**67 questions** across 8 categories. Every question now also has a `why` — a
 proposed *mechanism* for the trend, framed as a hypothesis (not settled fact),
 shown behind a "Why might this be?" dropdown after the player answers. Where a
 cause is genuinely contested, the `why` names the competing explanations

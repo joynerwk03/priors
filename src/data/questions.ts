@@ -63,7 +63,7 @@ export const QUESTIONS: Question[] = [
     category: 'Politics',
     prompt: 'Of all gun deaths in the United States, what share are suicides?',
     context: 'About 44,000 Americans died from guns in 2024.',
-    options: ['About 1 in 5', 'About 2 in 5', 'About 3 in 5'],
+    options: ['About 1 in 5', 'About 2 in 5', 'About 3 in 5', 'About 4 in 5'],
     answerIndex: 2,
     explanation:
       'In 2024, 62% of US gun deaths were suicides (homicides: 35%). Suicides have been the majority of American gun deaths every single year since 1995 — the "gun death" debate is mostly a suicide story, which fits neither side\'s preferred imagery.',
@@ -90,7 +90,7 @@ export const QUESTIONS: Question[] = [
     prompt:
       'Texas records the legal status of everyone it arrests. From 2012–2018, how did felony arrest rates of undocumented immigrants compare with US-born citizens?',
     options: [
-      'Undocumented immigrants substantially higher',
+      'Undocumented immigrants about twice as likely (or more)',
       'About the same',
       'US-born citizens about twice as likely (or more)',
     ],
@@ -140,7 +140,7 @@ export const QUESTIONS: Question[] = [
     category: 'Religion',
     prompt: 'What share of US scientists say they believe in God or a universal spirit / higher power?',
     context: 'Among the general American public, about 95% say they do.',
-    options: ['About 10%', 'About 30%', 'About half', 'About 75%'],
+    options: ['About 10%', 'About 30%', 'About 50%', 'About 75%'],
     answerIndex: 2,
     explanation:
       '51% — 33% believe in God, another 18% in a universal spirit or higher power (survey of AAAS scientists). Scientists are half as likely as the public to believe — yet far from the near-zero that both hardline atheists and believers tend to predict.',
@@ -189,7 +189,7 @@ export const QUESTIONS: Question[] = [
     category: 'Religion',
     prompt:
       'The Nurses\' Health Study followed 74,534 women for 16 years. Compared with women who never attended religious services, those attending more than once a week had all-cause mortality that was…',
-    options: ['About the same', 'About 15% lower', 'About 33% lower', 'Higher'],
+    options: ['No real difference', 'About 15% lower', 'About 33% lower', 'About 60% lower'],
     answerIndex: 2,
     explanation:
       '33% lower (hazard ratio 0.67) over 16 years, after adjusting for a long list of health and social confounders. Researchers point to social support, lower smoking and depression as partial mediators.',
@@ -209,7 +209,12 @@ export const QUESTIONS: Question[] = [
     category: 'Society',
     prompt:
       'In the US, how does the child poverty rate in single-mother families compare with married-couple families?',
-    options: ['Roughly the same', 'About twice as high', 'About six times as high'],
+    options: [
+      'About twice as high',
+      'About four times as high',
+      'About six times as high',
+      'About ten times as high',
+    ],
     answerIndex: 2,
     explanation:
       'Official 2024 poverty rates: 31.3% for single-mother families vs 5.5% for married-couple families — nearly a 6× gap. Family structure is one of the strongest poverty correlates in US data, however uncomfortable that is for narratives that ignore it.',
@@ -291,8 +296,8 @@ export const QUESTIONS: Question[] = [
     id: 'recidivism',
     category: 'Justice & Crime',
     prompt: 'Of US state prisoners released in 2008, what share were rearrested within 10 years?',
-    options: ['About 40%', 'About 60%', 'About 80%'],
-    answerIndex: 2,
+    options: ['About 20%', 'About 40%', 'About 60%', 'About 80%'],
+    answerIndex: 3,
     explanation:
       '82% were arrested at least once within 10 years (66% within 3). Whatever your theory of prison — rehabilitation, deterrence, or punishment — the US system releases people who overwhelmingly come back into contact with it.',
     caveat: 'Rearrest, not reconviction — an arrest is not proof of a new crime. Annual arrest rates fall from 43% in year 1 to 22% by year 10.',
@@ -314,7 +319,19 @@ export const QUESTIONS: Question[] = [
     explanation:
       'Down about 53% — from 758 to 359 violent crimes per 100,000 people. Meanwhile, in 23 of 27 Gallup surveys since 1993, at least 60% of Americans said crime was higher than the year before. The perception gap is the story.',
     why: {
-      body: 'The leading explanation for the perception gap is the availability heuristic amplified by media: violent incidents are vivid and heavily covered ("if it bleeds, it leads"), while a gradual statistical decline is invisible. Tellingly, people usually rate their own local area as safe but the "nation" as dangerous — a sign they are judging from news, not experience.',
+      body: 'Why crime fell is one of the great unsolved arguments in social science — no explanation commands consensus. Steven Levitt credited four factors: more police, a larger prison population, the waning of the crack epidemic, and (controversially) the legalization of abortion in the 1970s — while dismissing popular explanations like the economy and gun laws. Others sharply disagree: the Brennan Center estimates increased incarceration explains only ~5% of the 1990s drop and essentially none since 2000. Further candidates include the phase-out of leaded gasoline (lead exposure is linked to impulsivity and aggression), better security technology, and changing demographics. The honest answer is that we know crime fell far better than we know why. A separate question is why people think it rose: vivid media coverage makes violence "available" to memory while a gradual statistical decline is invisible — which is why people typically rate their own neighborhood safe but the nation dangerous.',
+      sources: [
+        {
+          name: 'Journal of Economic Perspectives',
+          detail: 'Levitt, 2004 — "Understanding Why Crime Fell in the 1990s: Four Factors that Explain the Decline and Six that Do Not"',
+          url: 'https://pubs.aeaweb.org/doi/abs/10.1257/089533004773563485',
+        },
+        {
+          name: 'Brennan Center for Justice',
+          detail: 'Counter-analysis estimating incarceration explains ~5% of the 1990s decline',
+          url: 'https://www.brennancenter.org/our-work/research-reports/crime-trends-1990-2016',
+        },
+      ],
     },
     source: {
       name: 'FBI Uniform Crime Reports (via Pew Research)',
@@ -326,8 +343,13 @@ export const QUESTIONS: Question[] = [
     id: 'disaster-deaths',
     category: 'Environment',
     prompt: 'Since the 1920s, the global death rate from natural disasters (per 100,000 people) has…',
-    options: ['Risen — more extreme weather', 'Stayed about flat', 'Fallen by over 90%'],
-    answerIndex: 2,
+    options: [
+      'Risen by about half',
+      'Stayed roughly flat',
+      'Fallen by about 40%',
+      'Fallen by over 90%',
+    ],
+    answerIndex: 3,
     explanation:
       'Fallen by well over 90% — the 1920s averaged over 500,000 disaster deaths a year; the 2010s about 45,000, while world population quadrupled. Wealth, forecasting, and infrastructure did this. Note what this is not: it is not a claim that warming is fake or that damage costs aren\'t rising.',
     why: {
@@ -346,12 +368,12 @@ export const QUESTIONS: Question[] = [
       'Counting accidents AND air pollution, how do deaths per unit of electricity compare between coal and nuclear power?',
     context: 'Includes Chernobyl and Fukushima in the nuclear count.',
     options: [
+      'Nuclear causes more deaths',
       'Coal causes about 3× more deaths',
       'Coal causes about 40× more deaths',
-      'Coal causes hundreds of times more deaths',
-      'Nuclear causes more deaths',
+      'Coal causes about 800× more deaths',
     ],
-    answerIndex: 2,
+    answerIndex: 3,
     explanation:
       'Coal: ~25 deaths per terawatt-hour (mostly air pollution). Nuclear: ~0.03 — roughly 800× fewer, about the same as wind and solar. The deadliest thing about nuclear power has been the fear of it.',
     why: {
@@ -495,8 +517,8 @@ export const QUESTIONS: Question[] = [
     category: 'Economics',
     prompt:
       'In 1990, about 38% of humanity lived in extreme poverty (under $2.15/day, inflation- and price-adjusted). What is that share today?',
-    options: ['About 45% — it has risen', 'About 25% — slowly falling', 'Under 10%'],
-    answerIndex: 2,
+    options: ['About 45%', 'About 25%', 'About 15%', 'About 9%'],
+    answerIndex: 3,
     explanation:
       'Under 10% — roughly 9%. The past three decades saw the largest escape from poverty in human history, mostly in Asia. In surveys, large majorities in rich countries guess this trend backwards.',
     caveat: '$2.15/day is a deliberately extreme line; hundreds of millions more live just above it.',
@@ -549,8 +571,13 @@ export const QUESTIONS: Question[] = [
     id: 'teen-births',
     category: 'Society',
     prompt: 'Since 1991, the US teen birth rate has…',
-    options: ['Risen about 30%', 'Stayed about flat', 'Fallen almost 80%'],
-    answerIndex: 2,
+    options: [
+      'Risen about 30%',
+      'Stayed about flat',
+      'Fallen about 40%',
+      'Fallen almost 80%',
+    ],
+    answerIndex: 3,
     explanation:
       'Fallen 79% — from 61.8 births per 1,000 teenage girls in 1991 to 13.1 in 2023, a record low. The evidence credits both more teens delaying sex and much better contraception use. Whatever "kids these days" are doing, it is the least teen pregnancy on record.',
     why: {
@@ -574,8 +601,13 @@ export const QUESTIONS: Question[] = [
     category: 'Environment',
     prompt: 'Since 1970, combined US emissions of the six most common air pollutants have…',
     context: 'Over the same period, US GDP roughly quadrupled and vehicle-miles driven nearly tripled.',
-    options: ['Risen along with GDP', 'Held about flat', 'Fallen by roughly three-quarters'],
-    answerIndex: 2,
+    options: [
+      'Risen by about half',
+      'Held about flat',
+      'Fallen by about a third',
+      'Fallen by about three-quarters',
+    ],
+    answerIndex: 3,
     explanation:
       'Down about 78% (1970–2020) while the economy quadrupled — one of the Clean Air Act\'s quiet triumphs. Note this covers criteria pollutants (smog, lead, particulates…), not CO₂. Environmental doom and environmental complacency are both miscalibrated here.',
     why: {
@@ -597,7 +629,7 @@ export const QUESTIONS: Question[] = [
       'Of US gun murders where the weapon is identified, what share are committed with rifles — the category that includes so-called "assault weapons"?',
     context:
       'Handguns are the other main category. For scale, in a typical year more people are murdered with knives than with rifles.',
-    options: ['About 3%', 'About 20%', 'About 45%'],
+    options: ['About 3%', 'About 15%', 'About 30%', 'About 45%'],
     answerIndex: 0,
     explanation:
       'Roughly 3%. In 2019 the FBI recorded about 360 rifle murders versus ~1,600 with knives and ~6,300 with handguns. The gun-policy debate centers on rifles; actual gun homicide is overwhelmingly handguns.',
@@ -617,8 +649,8 @@ export const QUESTIONS: Question[] = [
     category: 'Society',
     prompt: 'What share of US adults identify as LGBT?',
     context: 'Asked to estimate, the average American guesses about 23%.',
-    options: ['About 9%', 'About 23%', 'About 40%'],
-    answerIndex: 0,
+    options: ['About 5%', 'About 9%', 'About 23%', 'About 40%'],
+    answerIndex: 1,
     explanation:
       'About 9% (Gallup, 2025) — and rising fast among Gen Z — but far below the ~23% the average American guesses. The overestimate is large and bipartisan.',
     caveat:
@@ -644,8 +676,13 @@ export const QUESTIONS: Question[] = [
     category: 'Drugs & Health',
     prompt:
       'The US spends about twice as much per person on health care as the average wealthy country. How does US life expectancy compare with those countries?',
-    options: ['Higher — the spending buys results', 'About the same', 'Several years lower'],
-    answerIndex: 2,
+    options: [
+      'About 2 years higher',
+      'About the same',
+      'About 2 years lower',
+      'About 4 years lower',
+    ],
+    answerIndex: 3,
     explanation:
       'Several years lower — about 3–4 years below the comparable-country average, and the lowest among high-income peers — despite the highest per-capita spending in the OECD (~$13,800). More money, worse headline outcome.',
     caveat:
@@ -670,8 +707,13 @@ export const QUESTIONS: Question[] = [
     id: 'vaping-harm',
     category: 'Drugs & Health',
     prompt: "England's public health agency estimated that vaping (e-cigarettes) is how much less harmful than smoking cigarettes?",
-    options: ['Not meaningfully safer', 'About 50% less harmful', 'About 95% less harmful'],
-    answerIndex: 2,
+    options: [
+      'Not meaningfully safer',
+      'About 50% less harmful',
+      'About 75% less harmful',
+      'About 95% less harmful',
+    ],
+    answerIndex: 3,
     explanation:
       'At least ~95% less harmful, per Public Health England\'s expert review — because most of smoking\'s harm comes from combustion (tar, carbon monoxide), not nicotine. The UK actively recommends switching to vaping to quit smoking — nearly the opposite of typical US messaging.',
     caveat:
@@ -697,8 +739,8 @@ export const QUESTIONS: Question[] = [
     id: 'ceo-pay',
     category: 'Economics',
     prompt: 'In 1965, the CEO of a big US firm earned about 21× the typical worker. What is that ratio now?',
-    options: ['About 30 to 1', 'About 100 to 1', 'About 340 to 1'],
-    answerIndex: 2,
+    options: ['About 30 to 1', 'About 100 to 1', 'About 200 to 1', 'About 340 to 1'],
+    answerIndex: 3,
     explanation:
       'About 344 to 1 (2022, "realized" pay) — a more than 16-fold widening since 1965. CEO pay rose roughly 1,200% since 1978 while typical worker pay rose about 15%.',
     caveat:
@@ -802,7 +844,12 @@ export const QUESTIONS: Question[] = [
     category: 'Environment',
     prompt: 'Since its mid-2000s peak, what have US energy-related CO₂ emissions done?',
     context: 'Over the same period, US GDP and population both grew.',
-    options: ['Risen', 'Held about flat', 'Fallen about 18%'],
+    options: [
+      'Risen about 15%',
+      'Held roughly flat',
+      'Fallen about 18%',
+      'Fallen about 40%',
+    ],
     answerIndex: 2,
     explanation:
       'Fallen roughly 18–20% since the 2007 peak — the largest absolute drop of any country — mainly because cheap natural gas and renewables displaced coal. The US is often described as "doing nothing" on emissions; its emissions have in fact declined substantially.',
@@ -829,7 +876,7 @@ export const QUESTIONS: Question[] = [
     category: 'Justice & Crime',
     prompt: 'In the US, what share of reported property crimes (burglary, theft) end in an arrest?',
     context: 'For murder, about half are solved.',
-    options: ['About 12%', 'About 40%', 'About 70%'],
+    options: ['About 12%', 'About 30%', 'About 50%', 'About 70%'],
     answerIndex: 0,
     explanation:
       'Only about 12% of property crimes are "cleared" — and even murder clearance has fallen to ~52%, a record low. For most crimes, the odds of an arrest are low. The system solves far fewer crimes than "tough on crime" rhetoric implies.',
@@ -884,7 +931,7 @@ export const QUESTIONS: Question[] = [
     category: 'Society',
     prompt: 'What share of the US population is Muslim?',
     context: 'Asked to estimate, the average American guesses about 17%.',
-    options: ['About 1%', 'About 10%', 'About 17%'],
+    options: ['About 1%', 'About 5%', 'About 10%', 'About 17%'],
     answerIndex: 0,
     explanation:
       'About 1% — roughly 3.5 million people. Americans guess about 17 times too high, one of the largest perception gaps ever measured. The same overestimate of Muslim populations shows up across nearly every Western country.',
@@ -938,7 +985,7 @@ export const QUESTIONS: Question[] = [
     category: 'Economics',
     prompt: 'What share of all US household wealth is owned by the richest 1%?',
     context: 'If wealth were spread evenly, the top 1% would hold 1%.',
-    options: ['About 10%', 'About 20%', 'About 31%'],
+    options: ['About 10%', 'About 20%', 'About 30%', 'About 45%'],
     answerIndex: 2,
     explanation:
       'About 31% (Federal Reserve, 2024) — up from 23% in 1989. The top 1% now own more than the entire middle 40% combined. Alarming or fine, the concentration is larger than most people guess.',
@@ -965,7 +1012,7 @@ export const QUESTIONS: Question[] = [
     category: 'Politics',
     prompt:
       'What share of food-stamp (SNAP) benefits are lost to recipient fraud — people trafficking benefits for cash?',
-    options: ['About 1–2%', 'About 15%', 'About 30%'],
+    options: ['About 1–2%', 'About 10%', 'About 20%', 'About 30%'],
     answerIndex: 0,
     explanation:
       'Around 1.5% by benefit value (federal trafficking studies), with states establishing far less in confirmed fraud. A widely-cited "10.6% improper payment" figure is mostly clerical errors — caseworker over- and under-payments — not recipient fraud, and the reports explicitly warn against conflating the two.',
@@ -992,7 +1039,12 @@ export const QUESTIONS: Question[] = [
     category: 'Economics',
     prompt:
       'San Francisco expanded rent control to more buildings in 1994. Over the following years, what happened to the rental housing supply in the affected buildings?',
-    options: ['It grew', 'No change', 'It shrank about 15%'],
+    options: [
+      'It grew about 10%',
+      'Little change',
+      'It shrank about 15%',
+      'It shrank about 40%',
+    ],
     answerIndex: 2,
     explanation:
       'Landlords cut rental supply ~15% — converting to condos, selling to owner-occupants, or redeveloping — which pushed citywide rents UP about 5%. Rent control helped the specific tenants who kept their units, but worsened affordability overall, the opposite of its intent.',
@@ -1018,8 +1070,8 @@ export const QUESTIONS: Question[] = [
     id: 'mj-teen-use',
     category: 'Drugs & Health',
     prompt: 'After US states legalized recreational marijuana for adults, what happened to teen marijuana use?',
-    options: ['It rose sharply', 'No net increase', 'It fell to near zero'],
-    answerIndex: 1,
+    options: ['It rose sharply', 'It rose modestly', 'No net increase', 'It fell modestly'],
+    answerIndex: 2,
     explanation:
       'No net increase — studies covering ~900,000 teens across dozens of states found legalization was not associated with higher adolescent use, and some found modest decreases in teen drinking and vaping. The "legalization will hook kids" prediction hasn\'t materialized in the data so far.',
     caveat:
@@ -1044,7 +1096,7 @@ export const QUESTIONS: Question[] = [
     id: 'plastic-recycling',
     category: 'Environment',
     prompt: 'Of all the plastic waste the world generates, what share actually gets recycled?',
-    options: ['About 9%', 'About 35%', 'About 60%'],
+    options: ['About 9%', 'About 25%', 'About 40%', 'About 60%'],
     answerIndex: 0,
     explanation:
       'About 9% globally (OECD). Nearly half is landfilled, roughly a fifth incinerated, and roughly a fifth mismanaged — dumped or burned in the open. The blue recycling bin is far less effective than most conscientious recyclers assume.',
@@ -1071,8 +1123,8 @@ export const QUESTIONS: Question[] = [
     category: 'Environment',
     prompt:
       'To build a brand-new power plant in the US, which source produces the cheapest electricity per unit — before any subsidies?',
-    options: ['Coal', 'Natural gas', 'Solar and onshore wind'],
-    answerIndex: 2,
+    options: ['Coal', 'Natural gas', 'Nuclear', 'Solar and onshore wind'],
+    answerIndex: 3,
     explanation:
       'Utility-scale solar and onshore wind — the cheapest new-build power for a decade running (Lazard), unsubsidized (~$50–61/MWh vs ~$76 for new gas). The notion that renewables only survive on subsidies is out of date for new generation.',
     caveat:
@@ -1119,6 +1171,525 @@ export const QUESTIONS: Question[] = [
       name: 'Bart D. Ehrman (agnostic New Testament scholar)',
       detail: '"Did Jesus Exist?" (2012); reflects mainstream scholarly consensus',
       url: 'https://ehrmanblog.org/another-take-on-jesus-existence/',
+    },
+  },
+
+  // ---------- Added 2026-07-17 (expansion round 2) ----------
+
+  {
+    id: 'private-prisons',
+    category: 'Justice & Crime',
+    prompt: 'What share of US prisoners are held in private, for-profit prisons?',
+    context: 'Private prisons are a frequent focus of incarceration-reform campaigns.',
+    options: ['About 8%', 'About 25%', 'About 40%', 'About 60%'],
+    answerIndex: 0,
+    explanation:
+      'About 8% — roughly 92% of US prisoners sit in ordinary government-run facilities. Abolishing private prisons entirely would leave the overwhelming majority of mass incarceration untouched.',
+    caveat:
+      'The share is far higher in the federal system (~18%) and in immigration detention, where private operators dominate. Private firms also lobby for punitive policy, so their influence exceeds their headcount.',
+    why: {
+      body: 'One explanation for the outsized attention: a profit motive supplies a clear villain and a clean moral story, which makes for effective campaigning — while the actual drivers (prosecutors, legislatures, sentencing laws, all public) are diffuse and harder to organize against. The private share also grew quickly in the 1990s–2000s, cementing an impression that outran the numbers.',
+    },
+    source: {
+      name: 'Pew Research Center (BJS data)',
+      detail: 'US private prison population — ~8.2% of state and federal prisoners',
+      url: 'https://www.pewresearch.org/short-reads/2017/04/11/u-s-private-prison-population-has-declined-in-recent-years/',
+    },
+  },
+  {
+    id: 'top1-tax-share',
+    category: 'Politics',
+    prompt: 'What share of all federal income taxes is paid by the top 1% of earners?',
+    context:
+      'The top 1% (incomes above roughly $675,000) earn about 21% of all adjusted gross income.',
+    options: ['About 10%', 'About 25%', 'About 38%', 'About 55%'],
+    answerIndex: 2,
+    explanation:
+      'About 38% — nearly double their ~21% share of income, and up from 33% in 2001. The federal income tax is steeply progressive; "the rich pay nothing in taxes" is false as stated for federal income tax.',
+    caveat:
+      'This is federal INCOME tax only. Payroll, sales, and state taxes are flatter or regressive, and much top-end wealth is unrealized capital gains that never shows up as taxable income at all — which is the actual argument for taxing the rich more.',
+    why: {
+      body: 'The mechanism is largely mechanical: income is highly concentrated, so even a flat tax would collect a big share from the top, and progressive rates amplify that. Part of why the top-1% tax share ROSE is simply that their income share rose. This is why the tax debate talks past itself — one side cites share of taxes paid (high), the other cites effective rate on total wealth (low), and both numbers are real.',
+    },
+    source: {
+      name: 'Tax Foundation (IRS Statistics of Income)',
+      detail: 'Latest federal income tax data — top 1% paid 38.4% of federal income taxes (TY2023)',
+      url: 'https://taxfoundation.org/data/all/federal/latest-federal-income-tax-data-2025/',
+      funding: 'The Tax Foundation favors lower taxes; the underlying figures are IRS data.',
+    },
+  },
+  {
+    id: 'middle-class-upward',
+    category: 'Economics',
+    prompt:
+      'The American middle class shrank from 61% of adults in 1971 to 50% in 2021. Where did those people go?',
+    options: [
+      'Almost all moved down',
+      'More moved down than up',
+      'More moved UP than down',
+      'It split about evenly',
+    ],
+    answerIndex: 2,
+    explanation:
+      'More moved up than down. The upper-income tier grew from 14% to 21% (+7 points) while the lower tier grew from 25% to 29% (+4). The middle hollowed out in both directions — but mostly upward, which inverts how the shrinking-middle-class story is usually told.',
+    caveat:
+      'A real gain, but not the whole picture: the middle\'s share of aggregate income fell from 62% to 42% while the top\'s rose to 50%. The middle is a smaller slice of a bigger pie, and these tiers are defined relative to a moving median.',
+    why: {
+      body: 'A leading explanation is the return to education and skills: the college wage premium grew sharply, lifting a large slice of the middle into the upper tier, while middle-skill work was hollowed out by automation and trade, pushing others down. On this account the same economic force produced both movements — which is why the data supports both an optimistic and a pessimistic reading.',
+    },
+    source: {
+      name: 'Pew Research Center',
+      detail: '"How the American middle class has changed in the past five decades," 2022',
+      url: 'https://www.pewresearch.org/short-reads/2022/04/20/how-the-american-middle-class-has-changed-in-the-past-five-decades/',
+    },
+  },
+  {
+    id: 'climate-consensus',
+    category: 'Science',
+    prompt:
+      'Among actively publishing climate scientists, what share agree that recent global warming is primarily human-caused?',
+    options: ['About 55%', 'About 75%', 'About 90%', 'Over 97%'],
+    answerIndex: 3,
+    explanation:
+      'Over 97% — and more recent literature reviews put it above 99%. Multiple independent studies using different methods (abstract reviews, direct surveys of scientists) converge on the same range.',
+    caveat:
+      'The famous "97%" (Cook et al., 2013) counts papers that took a position, and its methodology has drawn genuine criticism. But the critiques mostly move the number around within the high 90s rather than overturning it — later work lands higher, not lower.',
+    why: {
+      body: 'Consensus this strong forms because the core physics is old and simple — CO₂ absorbs infrared radiation, a lab result from the 1850s — and multiple independent lines of evidence converge: ice cores, isotope ratios showing the added carbon is fossil in origin, satellite spectra, and ocean heat content. Consensus is not proof, and appeals to it can be lazy; what matters here is that it reflects agreement among independent measurements, not deference to authority.',
+      sources: [
+        {
+          name: 'NASA',
+          detail: 'Scientific consensus on climate change — summary of the consensus studies',
+          url: 'https://science.nasa.gov/climate-change/faq/do-scientists-agree-on-climate-change/',
+        },
+      ],
+    },
+    source: {
+      name: 'NASA / multiple consensus studies',
+      detail: 'Cook et al. 2013 (~97%); Doran & Zimmerman 2009 (97.4%); later reviews >99%',
+      url: 'https://science.nasa.gov/climate-change/faq/do-scientists-agree-on-climate-change/',
+    },
+  },
+  {
+    id: 'replication-crisis',
+    category: 'Science',
+    prompt:
+      'Researchers rigorously re-ran 100 published psychology experiments. What share produced statistically significant results the second time?',
+    options: ['About 36%', 'About 60%', 'About 80%', 'About 95%'],
+    answerIndex: 0,
+    explanation:
+      'About 36% — and the replication effects averaged half the size of the originals. This is the "replication crisis": a large share of published, peer-reviewed findings do not hold up when carefully redone.',
+    caveat:
+      'Psychology is not all of science, and the field responded seriously (preregistration, larger samples) — arguably better than most. "Failed to replicate" also is not "proven false"; some failures are the replication\'s fault, not the original\'s.',
+    why: {
+      body: 'The proposed mechanism is publication incentives. Journals reward novel, surprising, statistically significant results, which pressures researchers toward small samples and flexible analysis ("p-hacking"), while null results go in the file drawer. The literature ends up enriched for flukes. Note this cuts both ways: it punctures "peer-reviewed means true," but the crisis was discovered BY scientists doing more science — the error-correction worked.',
+      sources: [
+        {
+          name: 'Science',
+          detail: 'Open Science Collaboration, 2015 — "Estimating the reproducibility of psychological science"',
+          url: 'https://www.science.org/doi/10.1126/science.aac4716',
+        },
+      ],
+    },
+    source: {
+      name: 'Science (Open Science Collaboration)',
+      detail: '2015 — Reproducibility Project: Psychology, 100 replications',
+      url: 'https://www.science.org/doi/10.1126/science.aac4716',
+    },
+  },
+  {
+    id: 'iq-heritability',
+    category: 'Science',
+    prompt:
+      'By adulthood, how much of the variation in IQ between people is attributable to genetic differences?',
+    context:
+      'Heritability describes variation ACROSS a population in a given environment — not an individual\'s destiny.',
+    options: ['Almost none', 'About 20%', 'About 50%', 'About 70–80%'],
+    answerIndex: 3,
+    explanation:
+      'Roughly 70–80% by adulthood — among the most replicated findings in behavioral science. Counterintuitively, heritability RISES with age (the "Wilson effect"), while the influence of shared family environment — parenting style, books in the home — fades toward zero by adulthood.',
+    caveat:
+      'Critical limits: heritability is a population statistic under the environments people actually experience. It says nothing about any individual, nothing about differences BETWEEN groups, and does not mean IQ is fixed — introduce malnutrition or severe deprivation and the numbers change completely.',
+    why: {
+      body: 'The leading explanation for rising heritability is gene–environment correlation: as people gain autonomy, they increasingly select and build environments that match their propensities (a curious child seeks out books, clubs, harder classes), which amplifies small initial differences over time. Family environment matters enormously for a child\'s life and opportunities — its measurable effect on adult IQ specifically is what appears to wash out.',
+      sources: [
+        {
+          name: 'Twin Research and Human Genetics',
+          detail: 'Bouchard, "The Wilson Effect: The Increase in Heritability of IQ With Age"',
+          url: 'https://www.cambridge.org/core/journals/twin-research-and-human-genetics/article/wilson-effect-the-increase-in-heritability-of-iq-with-age/FF406CC4CF286D78AF72C9E7EF9B5E3F',
+        },
+      ],
+    },
+    source: {
+      name: 'Twin Research and Human Genetics',
+      detail: 'Bouchard, "The Wilson Effect" — heritability of IQ rises from ~.2–.4 in childhood to ~.7–.8 in adulthood',
+      url: 'https://www.cambridge.org/core/journals/twin-research-and-human-genetics/article/wilson-effect-the-increase-in-heritability-of-iq-with-age/FF406CC4CF286D78AF72C9E7EF9B5E3F',
+    },
+  },
+  {
+    id: 'creationism-share',
+    category: 'Religion',
+    prompt:
+      'What share of Americans say God created humans in their present form within the last 10,000 years?',
+    options: ['About 10%', 'About 22%', 'About 37%', 'About 55%'],
+    answerIndex: 2,
+    explanation:
+      'About 37% — the largest single group, though the lowest in Gallup\'s four decades of asking. Another 34% say humans evolved with God\'s guidance; only 24% accept evolution with no divine involvement.',
+    caveat:
+      'Survey answers about origins partly express identity and group loyalty rather than considered belief, which is why responses move with question wording.',
+    why: {
+      body: 'The remarkable stability of this number across 40 years — through universal schooling and the internet — suggests it tracks religious identity rather than exposure to evidence. It is concentrated among weekly worship attenders and biblical literalists, for whom the answer affirms scripture\'s authority. This is a case where more information does not move belief, because the belief is not primarily doing informational work.',
+    },
+    source: {
+      name: 'Gallup',
+      detail: '2024 — "Majority Still Credits God for Humankind, but Not Creationism" (37% creationist)',
+      url: 'https://news.gallup.com/poll/647594/majority-credits-god-humankind-not-creationism.aspx',
+    },
+  },
+  {
+    id: 'global-religiosity',
+    category: 'Religion',
+    prompt: 'By 2050, the religiously unaffiliated share of the WORLD population is projected to…',
+    context: 'The unaffiliated are growing as a share of the population in the US and Europe.',
+    options: [
+      'Rise from 16% to about 30%',
+      'Rise from 16% to about 22%',
+      'Hold steady at about 16%',
+      'Fall from 16% to about 13%',
+    ],
+    answerIndex: 3,
+    explanation:
+      'Fall — from 16% to roughly 13%, even as their absolute numbers pass 1.2 billion. The world is getting more religious, not less, because religious populations are younger and have more children. Secularization is a rich-country story, not a global one.',
+    caveat:
+      'Projections assume current fertility and switching trends hold; large-scale religious switching (as seen in the US) could change them. Within the US and Europe, the unaffiliated really are rising.',
+    why: {
+      body: 'Demography beats persuasion. The unaffiliated are concentrated in aging, low-fertility societies (China, Europe, Japan), while the fastest population growth is in highly religious sub-Saharan Africa. Religion spreads mostly by birth rather than conversion, so fertility differences swamp the secularizing drift inside wealthy countries. Anyone extrapolating "religion is dying" from their own society is generalizing from an unrepresentative sample.',
+    },
+    source: {
+      name: 'Pew Research Center',
+      detail: '"The Future of World Religions" — projected changes in the unaffiliated population, 2010–2050',
+      url: 'https://www.pewresearch.org/religion/2015/04/02/religiously-unaffiliated/',
+    },
+  },
+  {
+    id: 'mass-shootings-share',
+    category: 'Politics',
+    prompt: 'What share of US gun deaths come from mass shootings?',
+    context: 'About 45,000 Americans die from guns each year.',
+    options: ['About 1–3%', 'About 10%', 'About 20%', 'About 35%'],
+    answerIndex: 0,
+    explanation:
+      'Between roughly 1% and 3%, depending on the definition. Mass shootings drive nearly the entire gun debate while accounting for a tiny slice of gun deaths — most of which are suicides, followed by ordinary handgun homicides.',
+    caveat:
+      'Definitions vary a lot: strict definitions (4+ killed, in public) give well under 1%; the Gun Violence Archive\'s broader "4+ people shot" definition gives ~3%. A small share is not the same as small importance — mass shootings impose fear and social costs beyond the body count.',
+    why: {
+      body: 'The gap between attention and body count is a salience effect: mass shootings are vivid, collective, and feel random, so they dominate coverage — while the daily toll of suicides and individual homicides is invisible and diffuse. Policy attention follows the vivid cases, which is partly why proposals so often target the rarest category of gun death rather than the most common.',
+    },
+    source: {
+      name: 'Pew Research Center / Gun Violence Archive',
+      detail: 'What the data says about gun deaths in the US (2026); GVA mass-shooting share of shooting deaths',
+      url: 'https://www.pewresearch.org/short-reads/2026/04/28/what-the-data-says-about-gun-deaths-in-the-us/',
+    },
+  },
+  {
+    id: 'multivitamins',
+    category: 'Drugs & Health',
+    prompt:
+      'Nearly 400,000 healthy US adults were followed for over 20 years. What did daily multivitamin use do to their risk of death?',
+    options: ['Cut it by about 20%', 'Cut it by about 8%', 'No reduction', 'Roughly doubled it'],
+    answerIndex: 2,
+    explanation:
+      'No reduction — none from any cause, nor from cancer, heart disease, or stroke. (Daily users showed a slight 4% HIGHER death rate, which researchers attribute to other factors rather than the pills.) The US Preventive Services Task Force finds "little to no benefit" for healthy adults.',
+    caveat:
+      'This is about generally healthy, well-nourished adults. Targeted supplements for actual deficiencies — folate in pregnancy, B12 for vegans, vitamin D where deficient — are a different question with real benefits.',
+    why: {
+      body: 'The proposed mechanism for the null result: people eating adequate diets are already on the flat part of the dose-response curve, and more of a nutrient you are not short of does nothing. Early optimism came from observational studies in which supplement users were simply healthier people to begin with — they exercise more and smoke less — a confound that disappears in better-designed analyses.',
+      sources: [
+        {
+          name: 'National Institutes of Health',
+          detail: 'JAMA Network Open, 2024 — 3 prospective cohorts, ~390,000 adults',
+          url: 'https://www.nih.gov/news-events/news-releases/healthy-adults-taking-multivitamins-daily-not-associated-lower-risk-death',
+        },
+      ],
+    },
+    source: {
+      name: 'NIH / JAMA Network Open',
+      detail: '2024 — Multivitamin use and mortality across 3 prospective US cohorts (~390,000 adults, 20+ years)',
+      url: 'https://www.nih.gov/news-events/news-releases/healthy-adults-taking-multivitamins-daily-not-associated-lower-risk-death',
+    },
+  },
+  {
+    id: 'alcohol-vs-drugs',
+    category: 'Drugs & Health',
+    prompt: 'In the US, which kills more people per year: alcohol, or all illegal drugs combined?',
+    options: [
+      'Illegal drugs, substantially more',
+      'Illegal drugs, slightly more',
+      'About equal',
+      'Alcohol, substantially more',
+    ],
+    answerIndex: 3,
+    explanation:
+      'Alcohol — about 178,000 deaths a year from excessive drinking versus roughly 105,000 drug overdose deaths, even with the overdose crisis at historic highs. The legal drug sold in grocery stores kills more Americans than every illegal drug combined.',
+    caveat:
+      'The comparison depends on counting rules: alcohol deaths include long-run causes (liver disease, cancers, accidents) accumulated over decades, while overdoses are acute events. Per-user risk and years of life lost differ too.',
+    why: {
+      body: 'Two mechanisms: scale and time. Alcohol is used by a far larger share of the population, so even a low per-drink risk aggregates into a huge toll. And its harms are chronic — cirrhosis, cancers, crashes — rather than acute, so they never produce the single dramatic "overdose" moment that builds a moral panic. Legality and cultural familiarity make the harm invisible, not absent.',
+    },
+    source: {
+      name: 'CDC',
+      detail: 'Deaths from excessive alcohol use (~178,000/yr) vs drug overdose deaths (~105,000, 2023)',
+      url: 'https://www.cdc.gov/alcohol/facts-stats/index.html',
+    },
+  },
+  {
+    id: 'divorce-rate',
+    category: 'Society',
+    prompt: 'What share of first marriages in the US actually end in divorce?',
+    context: '"Half of all marriages end in divorce" is among the most repeated statistics in America.',
+    options: ['About 20%', 'About 42%', 'About 50%', 'About 65%'],
+    answerIndex: 1,
+    explanation:
+      'About 42% of first marriages — and falling. The "50%" came from a 1970s projection plus a statistical error: comparing the number of marriages in a year with the number of divorces in that year, which are mostly different people. Divorce peaked in the early 1980s and has declined since; of couples married in 2012, only 18% had divorced by their tenth anniversary.',
+    caveat:
+      'Rates vary enormously by education, income, and age at marriage — the decline is concentrated among college graduates. And fewer divorces partly reflects fewer and later marriages, not necessarily happier ones.',
+    why: {
+      body: 'Proposed mechanisms for the decline: people now marry later and usually after cohabiting, which screens out unstable matches before the wedding; and marriage has become more selective, increasingly something economically stable people do. On that account the "retreat from marriage" and the falling divorce rate are two faces of the same sorting — the marrying population is simply lower-risk than it used to be.',
+    },
+    source: {
+      name: 'CDC / Census data (via Snopes fact-check)',
+      detail: '~42% of first marriages projected to end in divorce; rates declining since the early 1980s',
+      url: 'https://www.snopes.com/news/2024/08/01/marriage-divorce-rate/',
+    },
+  },
+  {
+    id: 'foreign-born-share',
+    category: 'Society',
+    prompt:
+      'The foreign-born share of the US population is now about 14%. How does that compare with US history?',
+    options: [
+      'An all-time record',
+      'Near the record — the 1890s were slightly higher',
+      'Well below the 1900s peak of ~25%',
+      'About the historical average',
+    ],
+    answerIndex: 1,
+    explanation:
+      'Near the record, but not one: the peak was 14.8% in 1890, with 1870 (14.4%) and 1910 (14.7%) close behind. Today\'s level is historically high — and the US has been here before, during the period now nostalgically remembered as the golden age of assimilation.',
+    caveat:
+      'The absolute number today is far larger, and origin countries differ from the European inflows of the 1800s. "We\'ve done it before" is not proof it works identically now.',
+    why: {
+      body: 'The share collapsed to under 5% by 1970 after the restrictive 1924 quota law, then climbed again once the 1965 Immigration Act reopened the door. So anyone whose sense of "normal" formed in mid-20th-century America is anchored to a historical anomaly — the most closed era in US immigration history — which may be exactly why current levels feel unprecedented to both those who welcome and those who fear them.',
+    },
+    source: {
+      name: 'US Census Bureau',
+      detail: 'Historical census statistics on the foreign-born population, 1850–2000 (peak 14.8% in 1890)',
+      url: 'https://www.census.gov/library/working-papers/2006/demo/POP-twps0081.html',
+    },
+  },
+  {
+    id: 'homelessness-housing',
+    category: 'Society',
+    prompt:
+      'Why do some US cities have far more homelessness per capita than others? Which factor best explains the variation between cities?',
+    context: 'Compare Seattle and San Francisco with Detroit and Baltimore.',
+    options: [
+      'Rates of drug addiction',
+      'Rates of mental illness',
+      'Poverty rates',
+      'Housing costs and vacancy rates',
+    ],
+    answerIndex: 3,
+    explanation:
+      'Housing costs and rental vacancy rates. Researchers tested the usual suspects — mental illness, drug use, poverty, weather, welfare generosity — and none explain why homelessness is high in Seattle and low in Detroit. Cities with severe addiction and poverty but cheap housing have LESS homelessness: West Virginia has more opioid deaths and far less homelessness than California.',
+    caveat:
+      'This explains variation BETWEEN cities, not who becomes homeless within one — at the individual level addiction and mental illness matter enormously. Critics (e.g., Stephen Eide) argue the book underrates individual factors and service systems.',
+    why: {
+      body: 'The proposed mechanism is a game of musical chairs: addiction and mental illness largely determine WHO loses a seat, but the number of chairs — the supply and price of housing — determines HOW MANY people are left standing. Vulnerable people exist everywhere; they only end up unsheltered where the housing market is tight enough to leave no slack.',
+      sources: [
+        {
+          name: 'UC Press',
+          detail: 'Colburn & Aldern, "Homelessness is a Housing Problem" (2022)',
+          url: 'https://www.ucpress.edu/books/homelessness-is-a-housing-problem/paper',
+        },
+      ],
+    },
+    source: {
+      name: 'Colburn & Aldern, "Homelessness is a Housing Problem" (UC Press, 2022)',
+      detail: 'Regression analysis of homelessness rates across US metro areas',
+      url: 'https://www.ucpress.edu/books/homelessness-is-a-housing-problem/paper',
+    },
+  },
+  {
+    id: 'wrongful-conviction',
+    category: 'Justice & Crime',
+    prompt: 'What share of people sentenced to death in the US are likely innocent?',
+    context:
+      'Capital cases receive far more legal scrutiny and appellate review than ordinary convictions.',
+    options: ['Essentially none', 'About 1 in 25 (4%)', 'About 1 in 10', 'About 1 in 4'],
+    answerIndex: 1,
+    explanation:
+      'About 4% — roughly 1 in 25 — per the best available study, and that is for capital cases, the most heavily reviewed in the system. Estimates for the general prison population run about 1–5%.',
+    caveat:
+      'This is a statistical estimate of undetected error, not a count of proven innocents. Because capital cases get extra scrutiny, the true rate for ordinary convictions could be higher or lower.',
+    why: {
+      body: 'Documented mechanisms from DNA exonerations: mistaken eyewitness identification (memory is reconstructive, not a recording), false confessions under interrogation pressure, overstated or flawed forensic testimony, and jailhouse informants trading testimony for leniency. Note the direction of the error — a ~4% rate in a system built to convict only "beyond reasonable doubt" means that certainty is partly illusory, which should trouble people who trust the system and people who want executions alike.',
+      sources: [
+        {
+          name: 'National Institute of Justice',
+          detail: 'Wrongful convictions and DNA exonerations — contributing factors',
+          url: 'https://nij.ojp.gov/topics/articles/wrongful-convictions-and-dna-exonerations-understanding-role-forensic-science',
+        },
+      ],
+    },
+    source: {
+      name: 'National Institute of Justice / Innocence Project',
+      detail: 'Estimated wrongful conviction prevalence: ~4% of capital sentences; ~1–5% generally',
+      url: 'https://nij.ojp.gov/topics/articles/wrongful-convictions-and-dna-exonerations-understanding-role-forensic-science',
+    },
+  },
+  {
+    id: 'deterrence-certainty',
+    category: 'Justice & Crime',
+    prompt:
+      'Which does more to deter crime: increasing the LENGTH of prison sentences, or increasing the odds of getting caught?',
+    options: [
+      'Sentence length, clearly',
+      'Both about equally',
+      'Odds of getting caught, clearly',
+      'Neither has any measurable effect',
+    ],
+    answerIndex: 2,
+    explanation:
+      'The certainty of being caught, by a wide margin. Long sentences produce only a limited deterrent effect; the National Institute of Justice concludes severity is a weak deterrent while certainty of apprehension is a strong one. "Tough sentences" and "effective deterrence" are largely different things.',
+    caveat:
+      'This is about deterrence specifically. Prison also incapacitates — someone locked up cannot offend against the public — which is a separate and real effect of long sentences.',
+    why: {
+      body: 'The proposed mechanism is time discounting and attention: would-be offenders rarely calculate expected years in prison, and distant punishment is steeply discounted — but the immediate probability of being caught is salient at the moment of decision. That implies clearance rates (only ~12% for property crime) may matter more for crime than sentencing law. It is an uncomfortable finding for "lock them up longer" and for "police less" alike.',
+      sources: [
+        {
+          name: 'National Institute of Justice',
+          detail: '"Five Things About Deterrence" — certainty of apprehension vs severity of punishment',
+          url: 'https://nij.ojp.gov/topics/articles/five-things-about-deterrence',
+        },
+      ],
+    },
+    source: {
+      name: 'National Institute of Justice',
+      detail: '"Five Things About Deterrence"; Nagin, deterrence research review',
+      url: 'https://nij.ojp.gov/topics/articles/five-things-about-deterrence',
+    },
+  },
+  {
+    id: 'prison-decline',
+    category: 'Justice & Crime',
+    prompt: 'Since its peak, what has happened to the US prison population?',
+    context: 'US incarceration grew roughly sevenfold from 1973 onward.',
+    options: ['Still rising', 'Roughly flat', 'Fallen about 22%', 'Fallen about 60%'],
+    answerIndex: 2,
+    explanation:
+      'It peaked in 2009 and has fallen about 22% since (around 25% by 2021). Mass incarceration is usually discussed as an ongoing escalation — in fact the US has been quietly decarcerating for over a decade.',
+    caveat:
+      'Falling from a historic peak still leaves the US as the world\'s leading jailer by a wide margin, and the decline has been uneven — racial disparities have barely improved.',
+    why: {
+      body: 'Proposed drivers: falling crime reduced admissions; states facing budget crises after 2008 cut prison spending; bipartisan sentencing reform and court-ordered reductions (notably California\'s) trimmed populations; and pandemic court slowdowns accelerated the drop. The disconnect with public perception mirrors the crime-trend gap — a gradual decline generates no headlines, so the story everyone tells stays stuck at the 2009 peak.',
+      sources: [
+        {
+          name: 'The Sentencing Project',
+          detail: 'Mass incarceration trends — prison population since the 2009 peak',
+          url: 'https://www.sentencingproject.org/reports/mass-incarceration-trends/',
+        },
+      ],
+    },
+    source: {
+      name: 'Bureau of Justice Statistics / The Sentencing Project',
+      detail: 'Prison population peaked at ~1.61M in 2009; ~22% lower by 2023',
+      url: 'https://www.sentencingproject.org/reports/mass-incarceration-trends/',
+    },
+  },
+  {
+    id: 'ocean-plastic-rivers',
+    category: 'Environment',
+    prompt:
+      'Roughly what share of the plastic flowing into the ocean from rivers comes from Asian rivers?',
+    options: ['About 10%', 'About 30%', 'About 55%', 'Over 80%'],
+    answerIndex: 3,
+    explanation:
+      'Over 80% — 44 of the top 50 polluting rivers are in Asia. Wealthy Western countries, where most of the recycling guilt lives, contribute a small fraction of riverine ocean plastic, largely because they have functioning waste collection.',
+    caveat:
+      'Rich countries generate far MORE plastic waste per person — they just contain it in landfills and incinerators instead of leaking it. Some was also historically exported to Asia, so the West\'s footprint is not as clean as river data alone implies.',
+    why: {
+      body: 'The mechanism is waste-management infrastructure, not virtue: plastic reaches the ocean when it is generated near waterways without reliable collection. Middle-income countries with fast-rising consumption but immature waste systems leak the most; poor countries consume little, and rich countries collect nearly everything. This is why a household\'s recycling has almost no effect on ocean plastic — and why funding waste infrastructure abroad might have an enormous one.',
+      sources: [
+        {
+          name: 'Science Advances',
+          detail: 'Meijer et al., 2021 — "More than 1000 rivers account for 80% of global riverine plastic emissions"',
+          url: 'https://www.science.org/doi/10.1126/sciadv.aaz5803',
+        },
+      ],
+    },
+    source: {
+      name: 'Science Advances',
+      detail: 'Meijer et al., 2021 — global riverine plastic emissions to the ocean',
+      url: 'https://www.science.org/doi/10.1126/sciadv.aaz5803',
+    },
+  },
+  {
+    id: 'ev-lifecycle',
+    category: 'Environment',
+    prompt:
+      'Counting battery manufacturing, how long must a typical US electric car be driven before its total emissions fall below a comparable gasoline car\'s?',
+    options: [
+      'About 2 years',
+      'About 8 years',
+      'About 15 years',
+      'Never — the battery debt is too large',
+    ],
+    answerIndex: 0,
+    explanation:
+      'About 2 years of typical driving — roughly 1.5 on a clean grid. EVs really do start with an emissions debt, since battery manufacturing makes them dirtier to build, but they repay it quickly and are substantially cleaner over the vehicle\'s life.',
+    caveat:
+      'Break-even depends heavily on grid mix and vehicle size: a large EV on a coal-heavy grid takes considerably longer than a small one on hydro. The comparison is also against an average gas car — efficient hybrids narrow the gap.',
+    why: {
+      body: 'The mechanism is when the energy is spent: roughly a quarter of an EV\'s lifetime emissions are front-loaded into building the battery, while a gasoline car emits continuously at the tailpipe for its entire life. It is a fixed upfront cost versus a per-mile cost, so the cumulative lines cross early and then keep diverging. The "EVs are worse because of the battery" claim uses a true fact — the upfront debt — while omitting that it is repaid in about two years.',
+      sources: [
+        {
+          name: 'US EPA',
+          detail: 'Electric Vehicle Myths — lifecycle greenhouse gas comparison',
+          url: 'https://www.epa.gov/greenvehicles/electric-vehicle-myths',
+        },
+      ],
+    },
+    source: {
+      name: 'US EPA / ICCT',
+      detail: 'Lifecycle GHG analysis including battery manufacturing; break-even ~2 years',
+      url: 'https://www.epa.gov/greenvehicles/electric-vehicle-myths',
+    },
+  },
+  {
+    id: 'global-greening',
+    category: 'Environment',
+    prompt: 'Since 2000, the amount of green leaf area on Earth has…',
+    options: ['Fallen about 10%', 'Fallen about 4%', 'Stayed about flat', 'Risen about 10%'],
+    answerIndex: 3,
+    explanation:
+      'Risen about 10% (2000–2020) — a net gain in leaf area roughly twice the size of the continental US. NASA attributes about 70% of the greening to CO₂ fertilization (plants grow faster with more CO₂), plus tree-planting and intensive agriculture in China and India.',
+    caveat:
+      'Greening is not a rebuttal to climate concern, and NASA is explicit that the effect saturates — "for now." More leaves does not offset warming, ocean acidification, or the biodiversity loss from converting wild land into farms and plantations.',
+    why: {
+      body: 'The mechanism is plant physiology: CO₂ is a plant input, so at higher concentrations photosynthesis runs more efficiently and plants lose less water — which helps most in warm, arid regions (the Sahara shrank about 8%). It is a genuine benefit from a gas that also drives warming, which is why both "CO₂ is plant food, relax" and "nothing good can come of it" misstate the science.',
+      sources: [
+        {
+          name: 'NASA',
+          detail: 'Carbon dioxide fertilization greening Earth — satellite leaf-area data',
+          url: 'https://www.nasa.gov/centers-and-facilities/goddard/carbon-dioxide-fertilization-greening-earth-study-finds/',
+        },
+      ],
+    },
+    source: {
+      name: 'NASA',
+      detail: 'Satellite leaf-area index, 2000–2020; CO₂ fertilization explains ~70% of greening',
+      url: 'https://www.nasa.gov/centers-and-facilities/goddard/carbon-dioxide-fertilization-greening-earth-study-finds/',
     },
   },
 ];
