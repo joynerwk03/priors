@@ -1692,4 +1692,375 @@ export const QUESTIONS: Question[] = [
       url: 'https://www.nasa.gov/centers-and-facilities/goddard/carbon-dioxide-fertilization-greening-earth-study-finds/',
     },
   },
+
+  // ---------- Added 2026-07-17 (expansion round 3 — to >=10 per category) ----------
+
+  {
+    id: 'nuclear-waste',
+    category: 'Science',
+    prompt: 'How many Americans have been killed by radiation from US commercial nuclear waste?',
+    context: 'The US has stored spent nuclear fuel at commercial reactor sites for over 50 years.',
+    options: ['Zero', 'About 40', 'About 400', 'Several thousand'],
+    answerIndex: 0,
+    explanation:
+      'Zero. In more than half a century of commercial nuclear power, no member of the US public has been killed — or measurably harmed — by radiation from stored spent fuel. The waste that dominates anti-nuclear politics has, so far, a perfect safety record.',
+    caveat:
+      '"No harm so far" is not "no risk ever": spent fuel stays hazardous for millennia and the US still has no permanent repository, so the long-term problem is deferred, not solved. This also says nothing about weapons-program sites like Hanford, which are a genuine mess.',
+    why: {
+      body: 'Nuclear waste is uniquely easy to contain precisely because there is so little of it: all US commercial spent fuel from 50+ years would cover roughly one football field a few yards deep, and it is solid ceramic pellets sealed in steel-and-concrete casks. Contrast coal, whose waste is dispersed into the atmosphere where it can never be recaptured. The harm from coal is invisible and enormous; the harm from nuclear waste is visible, dreaded, and so far zero — which is close to the opposite of how the two are ranked in public feeling.',
+    },
+    source: {
+      name: 'US Nuclear Regulatory Commission',
+      detail: 'Backgrounder on radioactive waste; spent-fuel storage safety record',
+      url: 'https://www.nrc.gov/reading-rm/doc-collections/fact-sheets/radwaste',
+    },
+  },
+  {
+    id: 'race-genetics',
+    category: 'Science',
+    prompt:
+      'Of all the genetic variation in the human species, roughly how much is found WITHIN any single population rather than between populations?',
+    context: 'Compare two random people from the same continent with two from opposite sides of the world.',
+    options: ['About 15%', 'About 40%', 'About 60%', 'About 85%'],
+    answerIndex: 3,
+    explanation:
+      'About 85%. Two random people from the same population differ genetically nearly as much as two from opposite ends of the earth — Lewontin\'s 1972 finding: 85.4% of variation sits within populations, and only ~6% between the classic "races."',
+    caveat:
+      'This is among the most contested numbers in human genetics. A.W.F. Edwards\' "Lewontin\'s fallacy" critique shows that examining MANY genes at once still sorts people into continental ancestry clusters with high accuracy, because small differences correlate across loci. Both are true.',
+    why: {
+      body: 'The two claims measure different things, which is why the fight never resolves. Any single gene is nearly useless for classification — that is Lewontin. But correlations across thousands of genes accumulate into a reliable signal — that is Edwards; one coin flip tells you nothing about a coin, a thousand tell you a lot. Sit with the direction this cuts: it punctures a crude race-realism expecting deep biological division, AND a strong social-constructionism expecting no detectable ancestry signal whatsoever.',
+      sources: [
+        {
+          name: 'Human Genetics (PMC)',
+          detail: 'The background and legacy of Lewontin\'s apportionment of human genetic diversity',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC9014184/',
+        },
+      ],
+    },
+    source: {
+      name: 'Lewontin (1972) / Edwards (2003)',
+      detail: '"The Apportionment of Human Diversity" and the "Lewontin\'s fallacy" critique',
+      url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC9014184/',
+    },
+  },
+  {
+    id: 'learning-styles',
+    category: 'Science',
+    prompt:
+      'Does teaching students in their preferred "learning style" (visual, auditory, kinesthetic) improve how much they learn?',
+    context: 'Surveys find a large majority of teachers believe it does.',
+    options: [
+      'Yes, substantially',
+      'Yes, modestly',
+      'No measurable benefit',
+      'It actively harms learning',
+    ],
+    answerIndex: 2,
+    explanation:
+      'No measurable benefit. Across meta-analyses testing the "meshing hypothesis" — matching instruction to a student\'s style — the average effect is essentially zero. People do have preferences; those preferences just don\'t predict what they actually learn best from.',
+    caveat:
+      'This does not mean everyone learns identically, or that preferences are imaginary. It means the specific testable claim — match the mode to the learner and retention improves — fails when tested.',
+    why: {
+      body: 'The proposed explanation is that the best mode depends on the CONTENT, not the person: you learn geography from maps and music by listening, whatever your self-label. The myth persists because it is flattering (everyone gets a type), intuitive (preferences feel meaningful), and commercially useful (assessments and trainings sell). It is a case study in how a belief can be near-universal among trained professionals and still unsupported by evidence.',
+      sources: [
+        {
+          name: 'Association for Psychological Science',
+          detail: 'Learning styles debunked — no evidence supporting the meshing hypothesis',
+          url: 'https://www.psychologicalscience.org/news/releases/learning-styles-debunked-there-is-no-evidence-supporting-auditory-and-visual-learning-psychologists-say.html',
+        },
+      ],
+    },
+    source: {
+      name: 'Psychological Science in the Public Interest / APS',
+      detail: 'Pashler et al. review and subsequent meta-analyses of style-matching',
+      url: 'https://www.psychologicalscience.org/news/releases/learning-styles-debunked-there-is-no-evidence-supporting-auditory-and-visual-learning-psychologists-say.html',
+    },
+  },
+  {
+    id: 'placebo-objective',
+    category: 'Science',
+    prompt: 'Randomized trials compared placebo against NO treatment at all. What did the placebos actually do?',
+    context: 'Most trials compare a drug to placebo — this rarer design isolates what the placebo itself does.',
+    options: [
+      'Improved objective outcomes substantially',
+      'Improved objective outcomes modestly',
+      'Helped subjective symptoms like pain, but not objective outcomes',
+      'Did nothing whatsoever',
+    ],
+    answerIndex: 2,
+    explanation:
+      'Placebos improved subjective, patient-reported symptoms — especially pain — but had no significant effect on objective outcomes (lab values, survival, whether an infection cleared). Across 130+ trials, the "powerful placebo" mostly changes how people report feeling, not what their bodies do.',
+    caveat:
+      'Feeling better matters, and pain is a real outcome. The finding is also debated — some researchers argue placebo effects are real but highly context-dependent. This is "much weaker than folklore claims," not "nothing."',
+    why: {
+      body: 'The proposed mechanism for the illusion: in ordinary trials, placebo patients often improve — but mostly from regression to the mean (people enroll when symptoms peak, then naturally drift back), the disease\'s natural course, and politeness when reporting to a doctor. Only a no-treatment arm can separate "the placebo did it" from "they would have improved anyway." The mind-over-body story survives because the improvement is real; the attribution is what\'s wrong.',
+      sources: [
+        {
+          name: 'New England Journal of Medicine',
+          detail: 'Hróbjartsson & Gøtzsche, 2001 — "Is the Placebo Powerless?"',
+          url: 'https://www.nejm.org/doi/abs/10.1056/nejm200105243442106',
+        },
+      ],
+    },
+    source: {
+      name: 'New England Journal of Medicine',
+      detail: 'Hróbjartsson & Gøtzsche, 2001 — 130+ trials with a no-treatment control arm',
+      url: 'https://www.nejm.org/doi/abs/10.1056/nejm200105243442106',
+    },
+  },
+  {
+    id: 'alcohol-no-safe-level',
+    category: 'Drugs & Health',
+    prompt:
+      'What level of alcohol consumption minimizes your overall health risk, according to the largest global analysis?',
+    context: 'The "a glass of red wine is good for you" finding came from studies of heart disease alone.',
+    options: ['About 2 drinks a day', 'About 1 drink a day', 'About 3 drinks a week', 'Zero'],
+    answerIndex: 3,
+    explanation:
+      'Zero. The Global Burden of Disease analysis (195 countries, 694 data sources) found risk rises from the very first drink: moderate drinking\'s protection against heart disease is outweighed by increased cancer and other risks. There is no J-curve sweet spot.',
+    caveat:
+      'Genuinely contested. Later work suggests the picture differs by age — for older adults, low-level drinking may carry little or no net harm. And "no safe level" is not "high risk": one drink a day raises absolute risk only slightly.',
+    why: {
+      body: 'The proposed explanation for the old "moderate drinking is healthy" result is a study-design flaw: the zero-drinks comparison group included "sick quitters" — people who stopped drinking because they were already ill — which made abstainers look unhealthy and drinkers look protected by comparison. Separate lifelong abstainers from former drinkers and much of the benefit evaporates. Alcohol is also a Group 1 carcinogen, and cancer risk has no known threshold.',
+      sources: [
+        {
+          name: 'The Lancet',
+          detail: 'GBD 2016 Alcohol Collaborators, 2018 — "No level of alcohol consumption improves health"',
+          url: 'https://www.thelancet.com/article/S0140-6736(18)31571-X/fulltext',
+        },
+      ],
+    },
+    source: {
+      name: 'The Lancet (Global Burden of Disease 2016)',
+      detail: '2018 — alcohol use and burden for 195 countries; 694 data sources',
+      url: 'https://www.thelancet.com/article/S0140-6736(18)31571-X/fulltext',
+    },
+  },
+  {
+    id: 'antidepressants',
+    category: 'Drugs & Health',
+    prompt:
+      'The largest analysis of antidepressants pooled 522 trials and 116,477 patients. How did the drugs compare with placebo?',
+    options: [
+      'Every drug tested beat placebo',
+      'About half beat placebo',
+      'Only in severe depression',
+      'None beat placebo',
+    ],
+    answerIndex: 0,
+    explanation:
+      'All 21 antidepressants studied beat placebo (odds ratios 1.37 to 2.13), using both published and previously unpublished trial data. "Antidepressants are just placebo" is not what the best available evidence says.',
+    caveat:
+      'Effective is not the same as dramatic. The average benefit over placebo is modest, measured on subjective rating scales at 8 weeks; critics (notably Irving Kirsch) argue the effect is too small to be clinically meaningful for mild depression, and long-term data is thinner.',
+    why: {
+      body: 'Both camps have a real point, and the fight is about effect SIZE rather than existence. Placebo response in depression trials is unusually large — regression to the mean plus the genuine therapeutic effect of attention — which compresses the measured drug-placebo gap and lets skeptics call the remainder trivial. Cipriani\'s main contribution was hunting down unpublished trials: publication bias had inflated earlier estimates, so honest accounting shrank the effect without erasing it.',
+      sources: [
+        {
+          name: 'The Lancet',
+          detail: 'Cipriani et al., 2018 — network meta-analysis of 21 antidepressants',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/29477251/',
+        },
+      ],
+    },
+    source: {
+      name: 'The Lancet',
+      detail: 'Cipriani et al., 2018 — 522 trials, 116,477 participants, published + unpublished data',
+      url: 'https://pubmed.ncbi.nlm.nih.gov/29477251/',
+    },
+  },
+  {
+    id: 'screen-time-teens',
+    category: 'Society',
+    prompt:
+      'How strong is the evidence that smartphones and social media caused the rise in teen mental-health problems?',
+    context:
+      'Teen depression and anxiety diagnoses rose sharply from around 2012, as smartphones became near-universal.',
+    options: [
+      'Settled — a large causal effect is established',
+      'Real correlation, but small and hotly disputed causally',
+      'No correlation has ever been found',
+      'The underlying trend is fabricated',
+    ],
+    answerIndex: 1,
+    explanation:
+      'The correlation exists but is small, and researchers are in open warfare over what it means. Jonathan Haidt argues smartphones drove a "great rewiring" and a mental-illness epidemic; Candice Odgers and others counter that associations are tiny and inconsistent, and that struggling teens may simply use more social media (reverse causation). Both sides are reading the same data.',
+    caveat:
+      '"Disputed" is not "debunked" — Haidt may well be right, and the pre-registered experiments that could settle it are only now being run. Part of the rise in diagnoses also reflects more help-seeking rather than more illness.',
+    why: {
+      body: 'The core difficulty is that the key evidence is correlational and the timing is suggestive but not decisive: many things changed after 2012 — the aftermath of the financial crisis, school pressure, parenting norms, diagnostic expansion. Critics note the average association across all screen use is very small; Haidt\'s camp replies that averaging across everyone dilutes a harm concentrated among heavy social-media-using girls. Both critiques are legitimate, which is exactly why the question stays open.',
+      sources: [
+        {
+          name: 'Nature',
+          detail: '"Are screens harming teens? What scientists can do to find answers" (2025)',
+          url: 'https://www.nature.com/articles/d41586-025-00991-7',
+        },
+      ],
+    },
+    source: {
+      name: 'Nature / the Haidt–Odgers debate',
+      detail: 'Review of the contested evidence on screens and adolescent mental health',
+      url: 'https://www.nature.com/articles/d41586-025-00991-7',
+    },
+  },
+  {
+    id: 'interracial-marriage',
+    category: 'Society',
+    prompt:
+      'In 1958, 4% of Americans approved of marriage between Black and white people. What is approval today?',
+    options: ['About 55%', 'About 70%', 'About 84%', 'About 94%'],
+    answerIndex: 3,
+    explanation:
+      '94% — one of the largest opinion reversals Gallup has ever recorded. In 1958, 94% opposed; today 94% approve, an exact inversion within a single lifetime. Approval did not cross 50% until 1997, so most of the change is recent.',
+    caveat:
+      'Survey approval is cheap: it measures stated attitudes, not behavior or structural outcomes, and social-desirability bias likely inflates it. Views on interracial marriage are not a summary statistic for racism.',
+    why: {
+      body: 'The leading mechanism is cohort replacement plus contact: older, more-opposed cohorts die and are replaced by younger, more-approving ones, while rising actual intermarriage means more people personally know mixed couples — which reliably reduces opposition. Worth sitting with in both directions: it punctures the view that nothing ever improves on race, and it punctures nostalgia, since the "good old days" held the opposite view nearly unanimously.',
+      sources: [
+        {
+          name: 'Gallup',
+          detail: 'US approval of interracial marriage at a new high of 94% (2021)',
+          url: 'https://news.gallup.com/poll/354638/approval-interracial-marriage-new-high.aspx',
+        },
+      ],
+    },
+    source: {
+      name: 'Gallup',
+      detail: '63-year trend on approval of Black–white marriage, 1958–2021',
+      url: 'https://news.gallup.com/poll/354638/approval-interracial-marriage-new-high.aspx',
+    },
+  },
+  {
+    id: 'manufacturing-output',
+    category: 'Economics',
+    prompt:
+      'US manufacturing employment collapsed over recent decades. What happened to US manufacturing OUTPUT over the same period?',
+    options: ['Collapsed with it', 'Fell modestly', 'Stayed roughly flat', 'Rose to near record highs'],
+    answerIndex: 3,
+    explanation:
+      'It rose to near record highs — up roughly 80% since the 1980s. America makes more than ever with far fewer workers; one study attributes about 88% of manufacturing job losses from 2000–2010 to productivity gains from automation rather than trade.',
+    caveat:
+      'The 88% figure is contested — other economists (notably Autor\'s "China Shock" work) find trade with China destroyed a large number of specific jobs in specific places. Both are real: automation is the bigger long-run trend, trade the sharper local shock.',
+    why: {
+      body: 'The mechanism is productivity: robots, software, and better processes mean one worker now produces what several used to. Agriculture went through exactly this — the US grows more food than ever with about 2% of the workforce. It punctures the story that the factories "left" (mostly they automated), and it punctures the assumption that bringing factories back brings the jobs back: new plants are highly automated by design.',
+      sources: [
+        {
+          name: 'Upjohn Institute',
+          detail: 'Understanding the decline in manufacturing employment',
+          url: 'https://www.upjohn.org/research-highlights/understanding-decline-manufacturing-employment',
+        },
+      ],
+    },
+    source: {
+      name: 'Upjohn Institute / Federal Reserve industrial production data',
+      detail: 'Manufacturing output vs employment; productivity-driven job decline',
+      url: 'https://www.upjohn.org/research-highlights/understanding-decline-manufacturing-employment',
+    },
+  },
+  {
+    id: 'tariffs',
+    category: 'Economics',
+    prompt: 'When the US imposed tariffs on Chinese goods in 2018–19, who ended up actually paying them?',
+    context: 'A tariff is a tax collected at the US border on imported goods.',
+    options: [
+      'Chinese exporters, almost entirely',
+      'Split roughly evenly',
+      'US firms and consumers, almost entirely',
+      'Nobody — trade simply shifted',
+    ],
+    answerIndex: 2,
+    explanation:
+      'US firms and consumers, almost entirely. Multiple independent studies found essentially complete pass-through to American buyers, with an estimated net loss of about $16 billion a year to the US economy. The tariff functioned as a tax on Americans.',
+    caveat:
+      'This measures the price and welfare effect, not the strategic case — tariffs may still be justified for national security, leverage, or protecting a specific industry. Historically foreign exporters HAVE absorbed part of a tariff; 2018–19 was unusual in how completely they didn\'t.',
+    why: {
+      body: 'The proposed mechanism is limited substitutability and pricing power: Chinese exporters faced enough demand that they did not need to cut prices, so US importers absorbed the tax and passed it forward. Politicians in both parties describe tariffs as paid by the exporting country while the empirical literature says the opposite — which makes this one of the cleanest cases anywhere of the popular story and the measurement flatly diverging.',
+      sources: [
+        {
+          name: 'Journal of Economic Perspectives',
+          detail: 'Amiti, Redding & Weinstein, 2019 — "The Impact of the 2018 Tariffs on Prices and Welfare"',
+          url: 'https://www.aeaweb.org/articles?id=10.1257/jep.33.4.187',
+        },
+      ],
+    },
+    source: {
+      name: 'Journal of Economic Perspectives / NBER',
+      detail: 'Amiti, Redding & Weinstein (2019); Fajgelbaum et al. — near-complete tariff pass-through',
+      url: 'https://www.aeaweb.org/articles?id=10.1257/jep.33.4.187',
+    },
+  },
+  {
+    id: 'perception-gap',
+    category: 'Politics',
+    prompt:
+      'Republicans were asked what share of Democrats agree that "most police are bad people." The real figure is 15%. What did Republicans guess?',
+    context: 'Researchers call the gap between guessed and actual opponent views the "perception gap."',
+    options: ['About 18%', 'About 30%', 'About 52%', 'About 80%'],
+    answerIndex: 2,
+    explanation:
+      '52% — more than triple reality. The mirror image holds: Democrats guessed 49% of Republicans deny racism exists, when the real figure is 21%. Both sides imagine roughly twice as many extremists across the aisle as actually exist.',
+    caveat:
+      'Estimating any group\'s opinions is hard, and some of the gap is ordinary innumeracy rather than animus. The study also can\'t establish whether misperception drives hostility or hostility drives misperception.',
+    why: {
+      body: 'The proposed mechanism is a selection effect in what we see: we mostly encounter the other side through their worst representatives — clips chosen for outrage, the loudest partisans, viral extremes — so the sample we reason from is wildly unrepresentative of the actual distribution. The finding with the sharpest sting: the people with the LARGEST perception gaps are the most politically engaged, and among Democrats, the most educated. Consuming more political media made people more wrong, not less.',
+      sources: [
+        {
+          name: 'More in Common',
+          detail: '"The Perception Gap" — Americans\' estimates of opponents\' views vs reality',
+          url: 'https://perceptiongap.us/',
+        },
+      ],
+    },
+    source: {
+      name: 'More in Common',
+      detail: '"America\'s Perception Gaps" study',
+      url: 'https://perceptiongap.us/',
+    },
+  },
+  {
+    id: 'murder-stranger',
+    category: 'Justice & Crime',
+    prompt: 'What share of US murder victims are killed by a stranger?',
+    context: 'In 2019, about 28% were killed by acquaintances and 13% by family members.',
+    options: ['About 10%', 'About 25%', 'About 45%', 'About 65%'],
+    answerIndex: 0,
+    explanation:
+      'About 10% of all murders — roughly a fifth of those where the relationship is known. The overwhelming majority of murder victims are killed by someone they already knew. The stranger lurking in the dark, the animating image of American crime fear, is the rarest case.',
+    caveat:
+      'The relationship is unknown in about 49% of murders, and unsolved cases are likelier to be stranger killings — so the true stranger share is higher than 10%. Robbery-murders of strangers also concentrate in specific contexts.',
+    why: {
+      body: 'The mechanism is that most homicide grows out of existing relationships and disputes: domestic violence, arguments between people who know each other, conflicts inside social or criminal networks. Fear runs the opposite direction because stranger crime is what gets covered and what feels uncontrollable — you cannot vet a stranger. The implication is uncomfortable for everyone: for most victims, the most dangerous person in their life was already in it.',
+    },
+    source: {
+      name: 'FBI Uniform Crime Reports',
+      detail: 'Expanded homicide data, 2019 — victim–offender relationship',
+      url: 'https://ucr.fbi.gov/crime-in-the-u.s/2019/crime-in-the-u.s.-2019/topic-pages/expanded-homicide',
+    },
+  },
+  {
+    id: 'religious-knowledge',
+    category: 'Religion',
+    prompt:
+      'On Pew\'s survey of religious knowledge — questions about the Bible, Christianity, and world religions — which group scored highest?',
+    options: ['White evangelicals', 'Catholics', 'Atheists and agnostics', 'Mainline Protestants'],
+    answerIndex: 2,
+    explanation:
+      'Atheists and agnostics — averaging 20.9 of 32 correct against a national average of 16, beating Protestants (16) and Catholics (14.7). The advantage held even after controlling for education. Mormons and evangelicals did score highest on questions about the Bible specifically.',
+    caveat:
+      'Knowing facts about religion is not understanding or practicing it, and a quiz rewards one particular kind of book knowledge. Atheists are also disproportionately young, male, and educated — controls help but cannot fully remove selection.',
+    why: {
+      body: 'One proposed explanation is that leaving a religion usually requires actively examining it, so atheists and agnostics often studied their way out and kept the knowledge — while inherited faith can be lived devoutly without ever being interrogated. Religious minorities (Jews, Mormons) score highly for a related reason: a minority must know the majority\'s religion as well as its own. This punctures the assumption that belief tracks knowledge — in either direction.',
+      sources: [
+        {
+          name: 'Pew Research Center',
+          detail: 'US Religious Knowledge Survey — scores by religious affiliation',
+          url: 'https://www.pewresearch.org/religion/2010/09/28/u-s-religious-knowledge-survey/',
+        },
+      ],
+    },
+    source: {
+      name: 'Pew Research Center',
+      detail: 'US Religious Knowledge Survey (32 questions); replicated in later Pew surveys',
+      url: 'https://www.pewresearch.org/religion/2010/09/28/u-s-religious-knowledge-survey/',
+    },
+  },
 ];

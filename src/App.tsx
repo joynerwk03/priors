@@ -3,6 +3,7 @@ import { QUESTIONS } from './data/questions';
 import type { Category, Question } from './types';
 import { buildRound } from './lib/round';
 import { lifetimeStats } from './lib/storage';
+import { DONATE_URL, FEEDBACK_MAILTO, SHOW_DONATE, SUBMIT_MAILTO } from './config';
 import Home from './screens/Home';
 import Quiz from './screens/Quiz';
 import Results from './screens/Results';
@@ -14,19 +15,6 @@ type Screen =
   | { name: 'about' }
   | { name: 'quiz'; round: Question[]; category?: Category }
   | { name: 'results'; results: RoundResult[]; category?: Category };
-
-export const FEEDBACK_MAILTO =
-  'mailto:joynerwk03@gmail.com?subject=' + encodeURIComponent('Priors feedback');
-
-export const SUBMIT_MAILTO =
-  'mailto:joynerwk03@gmail.com?subject=' +
-  encodeURIComponent('Priors: new stat proposal') +
-  '&body=' +
-  encodeURIComponent(
-    'The claim or relationship:\n\n' +
-      'The data source it would cite:\n\n' +
-      'Why people with different worldviews would predict different answers:\n\n',
-  );
 
 export default function App() {
   const [screen, setScreen] = useState<Screen>({ name: 'home' });
@@ -40,6 +28,7 @@ export default function App() {
     const { seenIds } = lifetimeStats(categoryOf);
     const pool = category ? QUESTIONS.filter((q) => q.category === category) : QUESTIONS;
     setScreen({ name: 'quiz', round: buildRound(pool, seenIds), category });
+    window.scrollTo({ top: 0 });
   };
 
   const goHome = () => setScreen({ name: 'home' });
@@ -50,9 +39,16 @@ export default function App() {
         <button className="wordmark" onClick={goHome}>
           Priors
         </button>
-        <button className="navlink" onClick={() => setScreen({ name: 'about' })}>
-          How it works
-        </button>
+        <nav className="topnav">
+          <button className="navlink" onClick={() => setScreen({ name: 'about' })}>
+            How it works
+          </button>
+          {SHOW_DONATE && (
+            <a className="navlink" href={DONATE_URL} target="_blank" rel="noreferrer">
+              Donate
+            </a>
+          )}
+        </nav>
       </header>
 
       <main className="content">
@@ -61,9 +57,7 @@ export default function App() {
         {screen.name === 'quiz' && (
           <Quiz
             round={screen.round}
-            onDone={(results) =>
-              setScreen({ name: 'results', results, category: screen.category })
-            }
+            onDone={(results) => setScreen({ name: 'results', results, category: screen.category })}
           />
         )}
         {screen.name === 'results' && (
@@ -82,6 +76,11 @@ export default function App() {
         <span className="foot-links">
           <a href={FEEDBACK_MAILTO}>Feedback</a>
           <a href={SUBMIT_MAILTO}>Submit a stat</a>
+          {SHOW_DONATE && (
+            <a href={DONATE_URL} target="_blank" rel="noreferrer">
+              Donate
+            </a>
+          )}
         </span>
       </footer>
     </div>
