@@ -68,6 +68,28 @@ export function setFeedback(id: string, value: 1 | -1): void {
   saveStore(s);
 }
 
+/**
+ * Compact dump of the thumbs recorded in this browser.
+ *
+ * Thumbs are written to localStorage and never transmitted (v1 has no
+ * backend), so without an explicit export they are unreadable by anyone but
+ * the visitor. This turns that dead data into something they can paste into
+ * the feedback form. Returns '' when nothing has been rated.
+ */
+export function exportFeedback(): string {
+  const s = loadStore();
+  const up: string[] = [];
+  const down: string[] = [];
+  for (const [id, v] of Object.entries(s.feedback)) {
+    (v === 1 ? up : down).push(id);
+  }
+  if (up.length === 0 && down.length === 0) return '';
+  const lines: string[] = [];
+  if (up.length) lines.push(`liked (${up.length}): ${up.join(', ')}`);
+  if (down.length) lines.push(`disliked (${down.length}): ${down.join(', ')}`);
+  return lines.join('\n');
+}
+
 export interface Lifetime {
   rounds: number;
   answered: number;

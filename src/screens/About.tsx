@@ -1,11 +1,39 @@
+import { useState } from 'react';
 import { QUESTIONS } from '../data/questions';
-import { DONATE_URL, FEEDBACK_MAILTO, SHOW_DONATE, SUBMIT_MAILTO } from '../config';
+import { DONATE_URL, FEEDBACK_FORM_URL, SHOW_DONATE, SUBMIT_MAILTO } from '../config';
+import { exportFeedback } from '../lib/storage';
 
 interface Props {
   onBack: () => void;
 }
 
+type CopyState = 'idle' | 'copied' | 'empty' | 'failed';
+
 export default function About({ onBack }: Props) {
+  const [copyState, setCopyState] = useState<CopyState>('idle');
+
+  async function copyRatings() {
+    const text = exportFeedback();
+    if (!text) {
+      setCopyState('empty');
+      return;
+    }
+    try {
+      await navigator.clipboard.writeText(text);
+      setCopyState('copied');
+    } catch {
+      // Clipboard API needs a secure context and permission; both can fail.
+      setCopyState('failed');
+    }
+  }
+
+  const copyMessage: Record<CopyState, string> = {
+    idle: '',
+    copied: 'Copied. Paste it into the form.',
+    empty: "You haven't rated any questions yet.",
+    failed: 'Copy failed. Your browser blocked clipboard access.',
+  };
+
   return (
     <div className="about">
       <p className="kicker">Methodology</p>
@@ -70,9 +98,12 @@ export default function About({ onBack }: Props) {
 
       <h3>Help make it better</h3>
       <p>
-        Thumbs up or down on any question. <a href={FEEDBACK_MAILTO}>Send feedback</a> on anything
-        else, or <a href={SUBMIT_MAILTO}>propose a new statistic</a> — the best questions are the
-        ones where confident people disagree about what the data will say.
+        Thumbs up or down on any question.{' '}
+        <a href={FEEDBACK_FORM_URL} target="_blank" rel="noreferrer">
+          Send feedback
+        </a>{' '}
+        on anything else, or <a href={SUBMIT_MAILTO}>propose a new statistic</a> — the best
+        questions are the ones where confident people disagree about what the data will say.
         {SHOW_DONATE && (
           <>
             {' '}
@@ -83,6 +114,14 @@ export default function About({ onBack }: Props) {
             .
           </>
         )}
+      </p>
+      <p>
+        Your thumbs are stored in your browser and never sent anywhere on their own. If you want
+        them to count, copy them and paste them into the form.{' '}
+        <button className="linklike" type="button" onClick={copyRatings}>
+          Copy my ratings
+        </button>
+        {copyState !== 'idle' && <span className="copy-note"> {copyMessage[copyState]}</span>}
       </p>
 
       <button className="cta" onClick={onBack}>
