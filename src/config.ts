@@ -1,11 +1,5 @@
-/**
- * ⚠️ SET THIS BEFORE DEPLOYING.
- *
- * `DONATE_URL` is a PLACEHOLDER and does not point at a real account. Replace
- * it with your own Ko-fi / Buy Me a Coffee / GitHub Sponsors / Stripe page.
- * Left as-is, the donate link goes nowhere useful.
- */
-export const DONATE_URL = 'https://ko-fi.com/YOUR_HANDLE';
+/** William's Ko-fi page. Set 2026-08-13, replacing the launch-blocking placeholder. */
+export const DONATE_URL = 'https://ko-fi.com/joynerwk03';
 
 /** Set false to hide every donate affordance until the URL above is real. */
 export const SHOW_DONATE = true;
