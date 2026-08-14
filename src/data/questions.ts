@@ -389,10 +389,10 @@ export const QUESTIONS: Question[] = [
     id: 'warming-amount',
     category: 'Environment',
     prompt: 'How much has average global surface temperature risen since pre-industrial times (1850–1900)?',
-    options: ['About 0.3°C', 'About 1.3°C', 'About 3.2°C', 'About 5°C'],
+    options: ['About 0.3°C', 'About 1.4°C', 'About 3.2°C', 'About 5°C'],
     answerIndex: 1,
     explanation:
-      'About 1.3°C on the long-term average (2024 alone touched ~1.5°C). Miscalibration runs both directions: it is neither the "barely anything" of dismissives nor the "5 degrees already" of catastrophizers — and the next degree matters enormously.',
+      'About 1.4°C. WMO put 2025 at 1.44°C above the 1850–1900 baseline, and the 2023–2025 three-year average at 1.48°C; the past 11 years are the 11 warmest on record. Miscalibration runs both directions: it is neither the "barely anything" of dismissives nor the "5 degrees already" of catastrophizers — and the next degree matters enormously.',
     caveat:
       'A global average masks big regional variation — land and the Arctic have warmed much more than the ocean-heavy global mean.',
     why: {
@@ -438,7 +438,7 @@ export const QUESTIONS: Question[] = [
     ],
     answerIndex: 1,
     explanation:
-      'No significant vitamin or nutrient advantage for organic. Organic produce did carry ~30% lower risk of pesticide residues — though residues on conventional produce were generally within allowed limits. Pay for organic for pesticide or environmental reasons if you like; not for nutrition.',
+      'No significant vitamin or nutrient advantage for organic. Organic produce was less likely to carry detectable pesticide residues, by a risk difference of about 30 percentage points (not a 30% relative reduction, which is how the finding usually gets repeated) — though residues on conventional produce were generally within allowed limits. Pay for organic for pesticide or environmental reasons if you like; not for nutrition.',
     why: {
       body: 'The belief that organic is more nutritious is likely a "health halo": the label signals virtue (natural, eco, premium price), and people generalize that halo to nutrition even though the plant\'s vitamin content barely depends on farming method. Marketing reinforces the association.',
     },
@@ -516,12 +516,13 @@ export const QUESTIONS: Question[] = [
     id: 'extreme-poverty',
     category: 'Economics',
     prompt:
-      'In 1990, about 38% of humanity lived in extreme poverty (under $2.15/day, inflation- and price-adjusted). What is that share today?',
-    options: ['About 45%', 'About 25%', 'About 15%', 'About 9%'],
+      'In 1990, about 36% of humanity lived in extreme poverty (under $3.00/day, inflation- and price-adjusted). What is that share today?',
+    options: ['About 45%', 'About 25%', 'About 15%', 'About 10%'],
     answerIndex: 3,
     explanation:
-      'Under 10% — roughly 9%. The past three decades saw the largest escape from poverty in human history, mostly in Asia. In surveys, large majorities in rich countries guess this trend backwards.',
-    caveat: '$2.15/day is a deliberately extreme line; hundreds of millions more live just above it.',
+      'About 10% — around 808 million people in 2025, down from 2.31 billion in 1990. The past three decades saw the largest escape from poverty in human history, mostly in Asia. In surveys, large majorities in rich countries guess this trend backwards.',
+    caveat:
+      '$3.00/day (2021 prices) is a deliberately extreme line; hundreds of millions more live just above it. The World Bank raised the line from $2.15 to $3.00 in June 2025 when it adopted 2021 purchasing-power data, so older sources citing "9% under $2.15" describe the same trend on the previous line.',
     why: {
       body: 'The driver was economic growth in populous Asian economies (China, then India and others) integrating into global trade — hundreds of millions moving from subsistence farming into higher-productivity work. Why do people guess wrong? Good news that unfolds gradually is not "news"; media negativity bias means we hear about famines and crises, not the slow, undramatic climb out of poverty.',
     },
@@ -609,7 +610,7 @@ export const QUESTIONS: Question[] = [
     ],
     answerIndex: 3,
     explanation:
-      'Down about 78% (1970–2020) while the economy quadrupled — one of the Clean Air Act\'s quiet triumphs. Note this covers criteria pollutants (smog, lead, particulates…), not CO₂. Environmental doom and environmental complacency are both miscalibrated here.',
+      'Down about 79% (1970–2024) while the economy quadrupled — one of the Clean Air Act\'s quiet triumphs. Note this covers criteria pollutants (smog, lead, particulates…), not CO₂. Environmental doom and environmental complacency are both miscalibrated here.',
     why: {
       body: 'The mechanism is regulation plus technology: the Clean Air Act forced catalytic converters on cars, scrubbers on smokestacks, and the removal of lead from gasoline, decoupling pollution from economic growth. It is a concrete case where a mandate worked — which is why it cuts against pure complacency ("markets fix it") and pure doom ("nothing improves") alike.',
     },

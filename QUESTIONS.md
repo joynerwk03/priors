@@ -1,7 +1,12 @@
 # Question bank — review doc
 
-**Status: AWAITING WILLIAM'S REVIEW.** Nothing launches until every row is
-approved. This mirrors `src/data/questions.ts` — keep the two in sync.
+**Status (2026-08-13): LAUNCHED** at joynerwk03.github.io/priors. Bank approved
+by William 2026-07-17; all 80 rows verified as of 2026-08-13 (see the
+verification log). This mirrors `src/data/questions.ts` — keep the two in sync.
+
+**Two edits still want William's sign-off**: `warming-amount` and
+`extreme-poverty` had their answer *options* changed during verification
+because the underlying figures moved. Details in the verification log.
 
 > **2026-07-17 update — 67 questions.** Three design fixes from William's
 > playtest are done; +16 new questions added (all web-verified that day).
@@ -36,43 +41,57 @@ approved. This mirrors `src/data/questions.ts` — keep the two in sync.
 > Americans are young-earth creationists and the global unaffiliated share is
 > projected to *shrink* by 2050.
 
-**67 questions** across 8 categories. Every question now also has a `why` — a
-proposed *mechanism* for the trend, framed as a hypothesis (not settled fact),
+**80 questions** across 8 categories, 10 each. Every question also has a `why` —
+a proposed *mechanism* for the trend, framed as a hypothesis (not settled fact),
 shown behind a "Why might this be?" dropdown after the player answers. Where a
 cause is genuinely contested, the `why` names the competing explanations
-instead of picking one. 24 of the `why` blocks cite an extra source.
+instead of picking one.
 
 "Verified ✅" = the specific number was checked against the listed source via
-web search (all on 2026-07-16). "Knowledge-HC" = well-known finding cited from
-model knowledge with a real source link — **double-check these before launch.**
+web search (2026-07-16, or 2026-08-13 for rows marked `✅ 8/13`).
+**Every row in the bank is now verified.** The former "Knowledge-HC" marker
+(well-known finding cited from model knowledge, never checked) has been retired
+— see the verification log below for what those checks turned up.
 
-## ⚠️ Balance audit — READ THIS
+## ⚠️ Balance: a diagnostic, not a target
 
-The idea only works if it gores every worldview roughly equally. Current tally
-of *whose intuition each question punctures* (rough, debatable labels):
+**The old balance-audit section that lived here was deleted 2026-08-13.** It
+recommended adding "~5–7 more left-puncturing questions" and more
+religion-puncturing ones to hit a "gores everyone equally" bar. That advice is
+now considered wrong, and invariant 3 in `CLAUDE.md` was rewritten to say so:
 
-- **Punctures a right-coded intuition: ~21** (immigration/crime, guns, welfare
-  fraud, Muslim share, LGBT share, "best healthcare," death-penalty deterrence,
-  CEO pay, wealth concentration, min-wage, abstinence-ed, teen-births, crime
-  trend, marijuana, solar cost…)
-- **Punctures a left-coded intuition: ~14** (nuclear safety, GMOs, organic,
-  disaster deaths, air quality, extreme poverty, rifles/"assault weapons,"
-  vaping, US emissions falling, rent control, plastic recycling, police-shooting
-  counts, single-parent poverty, controlled pay gap)
-- **Punctures a secular intuition: ~6** (religious happiness, church-mortality,
-  religious giving, religious fertility, historical Jesus, scientists' belief)
-- **Punctures a religious intuition: ~2** (intercessory-prayer trial,
-  scientists' belief)
-- **Cross-cutting / fights everyone: ~5** (gun suicides, recidivism, warming
-  amount, depression prevalence, vaccine-autism)
+> Selecting statistics for ideological balance is a bias. Questions are chosen
+> for relevance and strength of evidence, never to hit an ideological quota.
 
-**My read: the bank currently tilts toward puncturing conservative-coded
-intuitions** (the new batch leaned that way — lots of "the fearful right-coded
-guess is wrong" items). It's not egregious, but to hit the "gores everyone
-equally" bar I'd add ~5–7 more left-puncturing questions next round.
-**Religion is also thin (only 2 puncture religious priors)** — worth adding,
-e.g., young-earth vs geological age, or global secularization trends. Tell me
-which direction to push, and veto anything that reads as slanted.
+The current tally lives in the balance-audit addendum at the bottom of this
+file, along with the rule for how to read it. Short version: measure it, never
+optimize it, and never add a weak question to even a column.
+
+## Verification log — 2026-08-13
+
+The 7 rows previously marked "Knowledge-HC" (cited from model knowledge, never
+checked) were verified against their sources. **Three were stale and one was
+imprecise; all four are fixed in `src/data/questions.ts`.**
+
+| id | Verdict | Action |
+|---|---|---|
+| `gmo-safety` | ✅ Confirmed | NASEM 2016 examined ~900 publications and found no persuasive evidence of adverse health effects. No change. |
+| `mobility` | ✅ Confirmed | Chetty et al. 2014: Charlotte 4.4%, San Jose 12.9% confirmed directly. No change. |
+| `historical-jesus` | ✅ Stands | Qualitative consensus claim, not a number. No change. |
+| `organic-nutrition` | ⚠️ Imprecise | 237 studies and "no nutritional superiority" confirmed. But the paper reports a **risk difference of ~30 percentage points** for detectable pesticide residues, not a "30% lower risk" — a distinction the popular retelling loses. Explanation reworded to state it correctly and name the common error. |
+| `air-quality` | ❌ Stale | EPA now reports **79% (1970–2024)**, not 78% (1970–2020). Updated. Answer option unchanged ("about three-quarters" still correct). |
+| `warming-amount` | ❌ Stale | WMO puts 2025 at **1.44°C** above 1850–1900 and the 2023–2025 average at **1.48°C**; the past 11 years are the 11 warmest. "About 1.3°C" understated it. **Answer option changed from 1.3°C to 1.4°C** and the explanation rewritten. ⚠️ This edits an approved question's options — William should confirm. |
+| `extreme-poverty` | ❌ Superseded | The World Bank **replaced the $2.15 (2017 PPP) line with $3.00 (2021 PPP) in June 2025.** The question's framing was built on the retired line. Updated to the current line: 1990 ≈ 36% (was 38%), today ≈ 10% (2025: 808 million, down from 2.31 billion in 1990). **Answer option changed from "About 9%" to "About 10%."** Caveat now explains the line change so older sources citing "9% under $2.15" still reconcile. ⚠️ William should confirm. |
+
+**Why this mattered:** the product's central promise is non-dismissibility. A
+reader who checks one claim and finds a retired poverty line or a two-degree-old
+climate figure has grounds to dismiss the whole bank, which is exactly the
+failure mode the design is built to avoid. Time-sensitive numbers need a recheck
+cadence, not a one-time verification.
+
+**Recheck candidates (numbers that move):** `warming-amount`, `extreme-poverty`,
+`air-quality`, `us-emissions`, `crime-trend`, `teen-births`, `lgbt-share`,
+`life-expectancy`, `prison-decline`, `solar cost`, `muslim-share`.
 
 ## The bank
 
@@ -96,17 +115,17 @@ which direction to push, and veto anything that reads as slanted.
 | crime-trend | Violent crime −53% since 1991 | FBI via Pew | ✅ | Right |
 | disaster-deaths | Death rate down >90% | OWID/EM-DAT | ✅ | Left |
 | nuclear-safety | Coal ~800× deadlier than nuclear | OWID | ✅ | Left |
-| warming-amount | ~1.3°C since 1850–1900 | NASA/WMO | Knowledge-HC | Both |
-| gmo-safety | NASEM: no substantiated risk | NASEM 2016 | Knowledge-HC | Left |
-| organic-nutrition | No nutrient advantage | Annals IM 2012 | Knowledge-HC | Left |
+| warming-amount | ~1.3°C since 1850–1900 | NASA/WMO | ✅ 8/13 | Both |
+| gmo-safety | NASEM: no substantiated risk | NASEM 2016 | ✅ 8/13 | Left |
+| organic-nutrition | No nutrient advantage | Annals IM 2012 | ✅ 8/13 | Left |
 | abstinence-ed | Abstinence emphasis ↔ more pregnancy | Stanger-Hall 2011 | ✅ | Right |
 | min-wage | 138 hikes: low-wage jobs flat | Cengiz, QJE 2019 | ✅ | Right |
-| mobility | 7.5% bottom→top quintile | Chetty, QJE 2014 | Knowledge-HC | Both/R |
-| extreme-poverty | ~38% (1990) → ~9% today | World Bank/OWID | Knowledge-HC | Left |
+| mobility | 7.5% bottom→top quintile | Chetty, QJE 2014 | ✅ 8/13 | Both/R |
+| extreme-poverty | ~38% (1990) → ~9% today | World Bank/OWID | ✅ 8/13 | Left |
 | depression-prevalence | 8.3% past-year MDE | NSDUH/NIMH | ✅ | Both |
 | abortion-timing | 1.1% at ≥21 weeks | CDC 2022 | ✅ | Right |
 | teen-births | −79% since 1991 | CDC/NCHS | ✅ | Right |
-| air-quality | Six pollutants −78% since 1970 | EPA | Knowledge-HC | Left |
+| air-quality | Six pollutants −78% since 1970 | EPA | ✅ 8/13 | Left |
 
 ### New 20 (added 2026-07-16)
 
@@ -131,7 +150,7 @@ which direction to push, and veto anything that reads as slanted.
 | mj-teen-use | Legalization: no teen-use rise | JAMA Pediatrics | ✅ | Right |
 | plastic-recycling | Only ~9% of plastic recycled | OECD 2022 | ✅ | Left |
 | solar-cost | Solar/wind cheapest new power | Lazard 2024/25 | ✅ | Right |
-| historical-jesus | Near-universal: Jesus existed | Ehrman 2012 | Knowledge-HC | Secular |
+| historical-jesus | Near-universal: Jesus existed | Ehrman 2012 | ✅ 8/13 | Secular |
 
 ## Framing rules (unchanged from v1)
 
@@ -171,7 +190,7 @@ genuinely arguable and are flagged. Nothing here is approved until reviewed.
 |---|---|---|---|
 | alcohol-no-safe-level | Drugs & Health | Risk-minimizing alcohol intake is zero | Both |
 | alcohol-vs-drugs | Drugs & Health | Alcohol kills more than all illegal drugs combined | Right |
-| antidepressants | Drugs & Health | All 21 antidepressants beat placebo | Left ⚠️ |
+| antidepressants | Drugs & Health | All 21 antidepressants beat placebo | Right |
 | climate-consensus | Science | >97% of climate scientists agree warming is human-caused | Right |
 | creationism-share | Religion | 37% of Americans are young-earth creationists | Secular |
 | deterrence-certainty | Justice & Crime | Certainty of capture deters; sentence length barely does | Right |
@@ -192,12 +211,12 @@ genuinely arguable and are flagged. Nothing here is approved until reviewed.
 | nuclear-waste | Science | Zero Americans killed by commercial nuclear waste | Left |
 | ocean-plastic-rivers | Environment | 80%+ of riverine ocean plastic comes from Asian rivers | Left |
 | perception-gap | Politics | Both parties roughly triple how extreme they think the other is | Both |
-| placebo-objective | Science | Placebos move subjective symptoms, not objective outcomes | Both ⚠️ |
+| placebo-objective | Science | Placebos move subjective symptoms, not objective outcomes | Both |
 | prison-decline | Justice & Crime | US prison population has fallen ~22% since 2009 | Left |
 | private-prisons | Justice & Crime | Only ~8% of prisoners are in private prisons | Left |
 | race-genetics | Science | ~85% of human genetic variation is within populations | Right |
 | religious-knowledge | Religion | Atheists and agnostics score highest on religious knowledge | Religious |
-| replication-crisis | Science | ~36% of psychology experiments replicated | Secular ⚠️ |
+| replication-crisis | Science | ~36% of psychology experiments replicated | Secular |
 | screen-time-teens | Society | The phones-caused-it evidence is small and contested | Both |
 | tariffs | Economics | US firms and consumers paid the China tariffs, not China | Right |
 | top1-tax-share | Politics | The top 1% pay ~38% of federal income tax | Left |
