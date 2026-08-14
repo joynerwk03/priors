@@ -154,3 +154,79 @@ per-pupil spending vs OECD (28–49% depending on method). All were too
 dismissible to meet the non-dismissibility bar. On deck for a left-puncturing
 rebalance round: homelessness-vs-housing-cost, free-trade/tariff price effects,
 nuclear-waste deaths (~0), ocean plastic concentrated in a few rivers.
+
+---
+
+# Balance audit — 2026-08-13 (Claude's pass, AWAITING WILLIAM'S REVIEW)
+
+The table above documents **47** questions. `src/data/questions.ts` ships
+**80**. These are the **33 rows that were never added**, classified by which
+prior each one punctures, so invariant 3 ("balanced offense") can actually be
+checked against what is live.
+
+**These classifications are Claude's judgment, not William's.** Several are
+genuinely arguable and are flagged. Nothing here is approved until reviewed.
+
+| id | Category | Claim (answer) | Punctures |
+|---|---|---|---|
+| alcohol-no-safe-level | Drugs & Health | Risk-minimizing alcohol intake is zero | Both |
+| alcohol-vs-drugs | Drugs & Health | Alcohol kills more than all illegal drugs combined | Right |
+| antidepressants | Drugs & Health | All 21 antidepressants beat placebo | Left ⚠️ |
+| climate-consensus | Science | >97% of climate scientists agree warming is human-caused | Right |
+| creationism-share | Religion | 37% of Americans are young-earth creationists | Secular |
+| deterrence-certainty | Justice & Crime | Certainty of capture deters; sentence length barely does | Right |
+| divorce-rate | Society | 42% of first marriages end in divorce, not 50%, and falling | Both |
+| ev-lifecycle | Environment | EVs repay their battery emissions debt in ~2 years | Right |
+| foreign-born-share | Society | 14% foreign-born is near, not above, the 1890 record | Right |
+| global-greening | Environment | Earth's green leaf area rose ~10% since 2000 | Left |
+| global-religiosity | Religion | The unaffiliated share of the world is projected to shrink | Secular |
+| homelessness-housing | Society | Housing cost, not addiction, explains variation between cities | Right |
+| interracial-marriage | Society | Approval went 4% → 94% in one lifetime | Left |
+| iq-heritability | Science | IQ is ~70–80% heritable in adulthood | Left |
+| learning-styles | Science | Matching teaching to "learning style" does nothing | Both |
+| manufacturing-output | Economics | US manufacturing output rose ~80%; automation, not trade | Both |
+| mass-shootings-share | Politics | Mass shootings are 1–3% of gun deaths | Left |
+| middle-class-upward | Economics | The shrinking middle mostly moved UP | Left |
+| multivitamins | Drugs & Health | Multivitamins cut mortality by zero | Both |
+| murder-stranger | Justice & Crime | ~10% of murder victims are killed by strangers | Right |
+| nuclear-waste | Science | Zero Americans killed by commercial nuclear waste | Left |
+| ocean-plastic-rivers | Environment | 80%+ of riverine ocean plastic comes from Asian rivers | Left |
+| perception-gap | Politics | Both parties roughly triple how extreme they think the other is | Both |
+| placebo-objective | Science | Placebos move subjective symptoms, not objective outcomes | Both ⚠️ |
+| prison-decline | Justice & Crime | US prison population has fallen ~22% since 2009 | Left |
+| private-prisons | Justice & Crime | Only ~8% of prisoners are in private prisons | Left |
+| race-genetics | Science | ~85% of human genetic variation is within populations | Right |
+| religious-knowledge | Religion | Atheists and agnostics score highest on religious knowledge | Religious |
+| replication-crisis | Science | ~36% of psychology experiments replicated | Secular ⚠️ |
+| screen-time-teens | Society | The phones-caused-it evidence is small and contested | Both |
+| tariffs | Economics | US firms and consumers paid the China tariffs, not China | Right |
+| top1-tax-share | Politics | The top 1% pay ~38% of federal income tax | Left |
+| wrongful-conviction | Justice & Crime | ~4% of death-sentenced people are likely innocent | Right |
+
+⚠️ **Arguable calls, William should overrule freely:**
+- `antidepressants` — "it's all placebo" skepticism is alt-health coded, which
+  cuts across left and right. Could be Both.
+- `placebo-objective` — same problem in reverse; filed Both, could be Left.
+- `replication-crisis` — filed Secular because it punctures deference to
+  peer-reviewed science, but that deference is not purely a secular trait.
+
+## Full-bank tally (all 80)
+
+| Punctures | Count |
+|---|---|
+| Right | 30 |
+| Left | 25 |
+| Both / cross-cutting | 14 |
+| Secular | 8 (+1 Sec+Rel) |
+| Religious | 2 (+1 Sec+Rel) |
+
+**The rebalance worked on the left/right axis.** At 47 questions the split was
+20:14 (1.43:1). At 80 it is 30:25 (1.20:1), close enough to even that no
+reader should feel singled out.
+
+🔴 **The religious/secular axis did not get fixed.** 9 questions puncture
+secular priors against 3 that puncture religious ones, a 3:1 tilt, even though
+Religion is a full 10-question category. Invariant 3 asks for
+left/right/religious/secular to be gored *roughly equally*, so this is the
+live gap. Closing it needs roughly **5–6 more religion-puncturing questions**
+(claims that would surprise a believer, not a skeptic).
