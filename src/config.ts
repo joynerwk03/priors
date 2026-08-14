@@ -15,15 +15,7 @@ export const FEEDBACK_FORM_URL =
 
 export const CONTACT_EMAIL = 'joynerwk03@gmail.com';
 
-export const FEEDBACK_MAILTO =
-  `mailto:${CONTACT_EMAIL}?subject=` + encodeURIComponent('Priors feedback');
-
-export const SUBMIT_MAILTO =
-  `mailto:${CONTACT_EMAIL}?subject=` +
-  encodeURIComponent('Priors: new stat proposal') +
-  '&body=' +
-  encodeURIComponent(
-    'The claim or relationship:\n\n' +
-      'The data source it would cite:\n\n' +
-      'Why people with different worldviews would predict different answers:\n\n',
-  );
+// The mailto constants that used to live here were removed 2026-08-13. The
+// form now has fields for feedback, stat proposals, and pasted ratings, so
+// every channel goes through one reliable link. Dead mailto helpers were only
+// an invitation to re-adopt a channel that silently fails for webmail users.

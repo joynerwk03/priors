@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { QUESTIONS } from '../data/questions';
-import { DONATE_URL, FEEDBACK_FORM_URL, SHOW_DONATE, SUBMIT_MAILTO } from '../config';
+import { DONATE_URL, FEEDBACK_FORM_URL, SHOW_DONATE } from '../config';
 import { exportFeedback } from '../lib/storage';
 
 interface Props {
@@ -102,8 +102,8 @@ export default function About({ onBack }: Props) {
         <a href={FEEDBACK_FORM_URL} target="_blank" rel="noreferrer">
           Send feedback
         </a>{' '}
-        on anything else, or <a href={SUBMIT_MAILTO}>propose a new statistic</a> — the best
-        questions are the ones where confident people disagree about what the data will say.
+        on anything else, or propose a new statistic in the same form — the best questions are the
+        ones where confident people disagree about what the data will say.
         {SHOW_DONATE && (
           <>
             {' '}

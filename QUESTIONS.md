@@ -220,13 +220,31 @@ genuinely arguable and are flagged. Nothing here is approved until reviewed.
 | Secular | 8 (+1 Sec+Rel) |
 | Religious | 2 (+1 Sec+Rel) |
 
-**The rebalance worked on the left/right axis.** At 47 questions the split was
-20:14 (1.43:1). At 80 it is 30:25 (1.20:1), close enough to even that no
-reader should feel singled out.
+**Left/right:** 20:14 (1.43:1) at 47 questions, 30:25 (1.20:1) at 80.
+**Religious/secular:** 9 secular-puncturing against 3 religious-puncturing.
 
-🔴 **The religious/secular axis did not get fixed.** 9 questions puncture
-secular priors against 3 that puncture religious ones, a 3:1 tilt, even though
-Religion is a full 10-question category. Invariant 3 asks for
-left/right/religious/secular to be gored *roughly equally*, so this is the
-live gap. Closing it needs roughly **5–6 more religion-puncturing questions**
-(claims that would surprise a believer, not a skeptic).
+## ⚠️ How to read these numbers (William, 2026-08-13)
+
+**These are a diagnostic, not a scorecard, and the 9:3 is not automatically a
+defect.** Invariant 3 was rewritten after this audit because the original
+wording ("gored roughly equally") mandated a bias:
+
+> The goal isn't to balance question types by ideological category. It's to
+> present the most relevant, provable statistics and let the story tell
+> itself. If the important statistics have left-leaning implications, we
+> shouldn't refuse to include them because of the bias. Selecting statistics
+> for ideological balance is a bias.
+
+So **do not close the 9:3 gap by adding religion-puncturing questions to hit a
+quota.** A weak question added to balance a column is worse than an
+unbalanced column, and it corrupts selection in precisely the way this product
+exists to expose.
+
+**The one legitimate use of this tally** is as a prompt to check *topic
+coverage*: is there an important, well-evidenced finding that would surprise a
+believer which simply never got considered? If yes, it belongs in the bank
+because it is important, and the ratio moves as a side effect. If no, then 9:3
+is the honest output of an honest process and it stays 9:3.
+
+The number worth watching is not the ratio. It is whether any question in the
+bank is there for a reason other than being important and true.

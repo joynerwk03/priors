@@ -3,7 +3,7 @@ import { QUESTIONS } from './data/questions';
 import type { Category, Question } from './types';
 import { buildRound } from './lib/round';
 import { lifetimeStats } from './lib/storage';
-import { DONATE_URL, FEEDBACK_FORM_URL, SHOW_DONATE, SUBMIT_MAILTO } from './config';
+import { DONATE_URL, FEEDBACK_FORM_URL, SHOW_DONATE } from './config';
 import Home from './screens/Home';
 import Quiz from './screens/Quiz';
 import Results from './screens/Results';
@@ -77,7 +77,9 @@ export default function App() {
           <a href={FEEDBACK_FORM_URL} target="_blank" rel="noreferrer">
             Feedback
           </a>
-          <a href={SUBMIT_MAILTO}>Submit a stat</a>
+          <a href={FEEDBACK_FORM_URL} target="_blank" rel="noreferrer">
+            Submit a stat
+          </a>
           {SHOW_DONATE && (
             <a href={DONATE_URL} target="_blank" rel="noreferrer">
               Donate
